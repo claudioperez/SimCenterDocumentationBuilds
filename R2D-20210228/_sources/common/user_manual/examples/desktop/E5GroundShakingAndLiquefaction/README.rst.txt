@@ -3,7 +3,7 @@ E5 - Ground Shaking and Liquefaction
 ====================================
 
 +-----------------+---------------------------------------------------------------+
-| Download files  | :github:`Github <Examples/E5GroundShakingAnkLiquefaction/>`   |
+| Download files  | :github:`Github <Examples/E5GroundShakingAndLiquefaction/>`   |
 +-----------------+---------------------------------------------------------------+
 
 This example presents a coupled damage assessment for ground shaking and liquefaction hazards. To infer liquefaction, estimates of horizontal spreading and vertical settlement are generated from PGA values obtained through PSHA. These three intensity measures form the basis of input to a building-level, HAZUS-based damage and loss assessment that accounts for potential collapses due to liquefaction. Approximately 14,000 buildings are considered in the city of Alameda, CA.

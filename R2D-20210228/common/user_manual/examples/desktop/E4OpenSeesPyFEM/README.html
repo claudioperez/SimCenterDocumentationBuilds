@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>4.1. E4 - OpenSeesPy FEM &mdash; Regional Resilience Determination Tool  documentation</title>
+  <title>4.2. E4 - OpenSeesPy FEM &mdash; Regional Resilience Determination Tool  documentation</title>
   
 
   
@@ -44,8 +44,8 @@
     
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
-    <link rel="next" title="4.2. E5 - Ground Shaking and Liquefaction" href="../E5GroundShakingAndLiquefaction/README.html" />
-    <link rel="prev" title="4. Examples" href="../examples.html" />
+    <link rel="next" title="4.3. E5 - Ground Shaking and Liquefaction" href="../E5GroundShakingAndLiquefaction/README.html" />
+    <link rel="prev" title="4.1. E2 - MDOF Building Response" href="../E2MDOFBuildingResponse/README.html" />
 <script src="https://cdn.jsdelivr.net/npm/vega@5.12.1"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.13.1"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.8.0"></script>
@@ -116,14 +116,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../usage/desktop/usage.html">2. User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../troubleshooting/desktop/troubleshooting.html">3. Troubleshooting</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../examples.html">4. Examples</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">4.1. E4 - OpenSeesPy FEM</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#required-files">4.1.1. Required Files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#modeling-procedure">4.1.2. Modeling Procedure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../E2MDOFBuildingResponse/README.html">4.1. E2 - MDOF Building Response</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.2. E4 - OpenSeesPy FEM</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#required-files">4.2.1. Required Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modeling-procedure">4.2.2. Modeling Procedure</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../E5GroundShakingAndLiquefaction/README.html">4.2. E5 - Ground Shaking and Liquefaction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../E2MDOFBuildingResponse/README.html">4.3. E2 - MDOF Building Response</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../Earthquake4_Alameda_SW4/README.html">4.4. Physics-based Ground Motions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../E5GroundShakingAndLiquefaction/README.html">4.3. E5 - Ground Shaking and Liquefaction</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../bugs.html">5. Bugs &amp; Feature Requests</a></li>
@@ -189,7 +188,7 @@
         
           <li><a href="../examples.html"><span class="section-number">4. </span>Examples</a> &raquo;</li>
         
-      <li><span class="section-number">4.1. </span>E4 - OpenSeesPy FEM</li>
+      <li><span class="section-number">4.2. </span>E4 - OpenSeesPy FEM</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -209,7 +208,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="e4-openseespy-fem">
-<h1><span class="section-number">4.1. </span>E4 - OpenSeesPy FEM<a class="headerlink" href="#e4-openseespy-fem" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">4.2. </span>E4 - OpenSeesPy FEM<a class="headerlink" href="#e4-openseespy-fem" title="Permalink to this headline">¶</a></h1>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 25%" />
@@ -223,7 +222,7 @@
 </table>
 <p>Advanced response estimation is enabled in this example through custom scripts that generate a finite element model for a building using the information available in the building inventory. A template script is provided that creates a building-specific cantilever and performs the response-history analysis to obtain EDPs. The hazard is described by empirical ground motion records from the PEER NGA West2 database. The buildings are located in Albany, CA, and their damage and loss assessment is based on the HAZUS methodology. This example includes 81 buildings and 5 are selected for analysis.</p>
 <div class="section" id="required-files">
-<h2><span class="section-number">4.1.1. </span>Required Files<a class="headerlink" href="#required-files" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.2.1. </span>Required Files<a class="headerlink" href="#required-files" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic">
 <li><p><a class="reference external" href="https://github.com/NHERI-SimCenter/R2DTool/tree/master/Examples/E4OpenSeesPyFEM/input_data/model/cantilever_light.py">cantilever_light.py</a>
 This Python script defines the following functions which use OpenSeesPy to construct a structural model.</p>
@@ -265,7 +264,7 @@ direction.</p>
 </ol>
 </div>
 <div class="section" id="modeling-procedure">
-<h2><span class="section-number">4.1.2. </span>Modeling Procedure<a class="headerlink" href="#modeling-procedure" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.2.2. </span>Modeling Procedure<a class="headerlink" href="#modeling-procedure" title="Permalink to this headline">¶</a></h2>
 <p>This example is a small-scale regional earthquake risk assessment which performs response simulation and damage/loss estimation for a group of 20 wood buildings under a pseudo earthquake scenario. The procedure for this example can be configured through the R2D interface by sequentially entering the following parameters into the respective panels:</p>
 <ol class="arabic">
 <li><p><strong>VIZ</strong> The 20 buildings are distributed in space in a <span class="math notranslate nohighlight">\(4 \times 5\)</span> grid in Northern California.</p>
