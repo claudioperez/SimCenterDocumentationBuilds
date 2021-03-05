@@ -213,12 +213,12 @@
 <span id="lblinstallmac"></span><h1><span class="section-number">1.2. </span>Install on macOS 10<a class="headerlink" href="#install-on-macos-10" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="install-python-3-8">
 <h2><span class="section-number">1.2.1. </span>Install Python 3.8<a class="headerlink" href="#install-python-3-8" title="Permalink to this headline">¶</a></h2>
-<p>The Mac comes with Python pre-installed, but the default Python is the outdated version 2.7. As of January 1st, 2020 no new bug reports, fixes, or changes will be made to Python 2, and Python 2 is officially no longer supported. SimCenter tools require Python 3.8.
-If you have not yet installed Python, we recommend installing Python 3.8 from <a class="reference external" href="https://www.python.org/downloads/release/python-386/">Python.org</a> , using the
+<p>The Mac comes with Python pre-installed, but the default Python is the outdated version 2.7. Since January 1st, 2020 no new bug reports, fixes, or changes have been made to Python 2, and Python 2 is officially no longer supported. SimCenter tools require Python 3.8.
+If you have not yet installed Python, we recommend installing Python 3.8 from <a class="reference external" href="https://www.python.org/downloads/release/python-386/">Python.org</a>, using the
 <strong>macOS 64-bit installer</strong>. The installer will place a python3 executable in your <strong>PATH</strong>.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The latest version of Python is 3.9.1. Certain modules required by SimCenter applications fail in the pip install process detailed below.</p>
+<p>The latest version of Python is 3.9.1. Certain Python modules required by SimCenter applications fail under Python 3.9 in the pip install process detailed below. If you already have Python 3.9, we recommend installing a Python 3.8 as well that you will use only for the SimCenter applications.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -231,7 +231,7 @@ If you have not yet installed Python, we recommend installing Python 3.8 from <a
 <p class="caption"><span class="caption-number">Fig. 1.2.1 </span><span class="caption-text">Python: Folder Displayed at Conclusion of Install</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </div>
 </div>
-<p>Once Python is installed, you need to extend it by installing a few additional packages. To faciliate this phase of the installation, we created a <strong>nheri_simcenter</strong> python package that automatically installs all other dependencies. Start a Terminal window and type the following command:</p>
+<p>Once Python is installed, you need to extend it by installing a few additional packages. To facilitate this phase of the installation, we created a <strong>nheri_simcenter</strong> python package that automatically installs all other dependencies. Start a Terminal window and type the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3 install nheri_simcenter --upgrade
 </pre></div>
 </div>
@@ -240,10 +240,6 @@ If you have not yet installed Python, we recommend installing Python 3.8 from <a
 <p>You can use the spotlight app (magnifying glass at the top right corner of the desktop) to start a Terminal window. Start the spotlight app and type in terminal. The Terminal application should appear as the top hit.</p>
 </div>
 <p>Make sure you see a message that confirms the successful installation of the nheri-simcenter package before proceeding to the next step.</p>
-<p>If you plan to use OpenSeesPy to run finite element analyses, you should also install that package at this point. (If you are not sure, we recommend you to install it.) You can install OpenSeesPy using the terminal window and the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3 install openseespymac --upgrade
-</pre></div>
-</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you forget to invoke the <code class="docutils literal notranslate"><span class="pre">UpdateShellProfile.command.sh</span></code> script at the end of the install, you can always edit the correct shell file later to update the <code class="docutils literal notranslate"><span class="pre">PATH</span></code> variable to point to the Python application.</p>
