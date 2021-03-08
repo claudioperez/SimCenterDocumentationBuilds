@@ -230,19 +230,19 @@ two steps are required:</p>
 <h2>Configuring UQ tab<a class="headerlink" href="#configuring-uq-tab" title="Permalink to this headline">¶</a></h2>
 <p>The quoFEM interface can be customized to accept the required inputs for
 user-specified UQ engines. The “CustomUQ” option should be selected, as shown in
-<a class="reference internal" href="#customuqinput"><span class="std std-numref">Fig. 2.1.14</span></a>. The UQ application name should then be input as “Other-UQ” as
+<a class="reference internal" href="#customuqinput"><span class="std std-numref">Fig. 2.1.4.1.1</span></a>. The UQ application name should then be input as “Other-UQ” as
 this will direct quoFEM to invoke the customized UQ backend where users can plug
 in their own functionality.</p>
 <div class="align-center figure" id="id1">
 <span id="customuqinput"></span><img alt="../../../../_images/CustomUQEngine.png" src="../../../../_images/CustomUQEngine.png" />
-<p class="caption"><span class="caption-number">Fig. 2.1.14 </span><span class="caption-text">Custom UQ Engine Configuration</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 2.1.4.1.1 </span><span class="caption-text">Custom UQ Engine Configuration</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <p>Next, users must configure the interface to accept inputs required to run their
 UQ engine. This is done through a JSON configuration file that is specified
 through “Configuration Input File”. Once this file is input, the user interface
 will be automatically updated to accept the inputs specified in the JSON
 configuration. An example JSON configuration is shown <a class="reference internal" href="#jsoninput"><span class="std std-ref">below</span></a>. This
-configuration file generates the interface shown in <a class="reference internal" href="#customuqinput"><span class="std std-numref">Fig. 2.1.14</span></a>.</p>
+configuration file generates the interface shown in <a class="reference internal" href="#customuqinput"><span class="std std-numref">Fig. 2.1.4.1.1</span></a>.</p>
 <div class="highlight-default notranslate" id="jsoninput"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">Example</span> <span class="n">JSON</span> <span class="n">Configuration</span> <span class="k">for</span> <span class="n">Custom</span> <span class="n">UQ</span> <span class="n">Engine</span>
 
 <span class="p">{</span>
@@ -356,7 +356,7 @@ value of the current realization separated by a space.</p>
 </div>
 <p>As an example, <strong>UQpy</strong> has been implemented in the customized
 backend–the source code for the customized <em>UqRunner</em> class can be found in the
-quoFEM repository in the <em>repositoryRoot/applications/performUQ/other</em>
+quoFEM repository in the <code class="docutils literal notranslate"><span class="pre">repositoryRoot/applications/performUQ/other</span></code>
 directory.</p>
 <p>Lastly, the name of the UQ driver needs to be added to <em>configureAndRunUQ.py</em> in
 the list of UQ driver options–this corresponds to the UQ driver name provided

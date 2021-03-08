@@ -203,62 +203,63 @@
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Download files</p></td>
-<td><p><a class="reference external" href="https://github.com/NHERI-SimCenter/quoFEM/tree/master/Examples/E3PhysicsBasedGroundMotions/">Github</a></p></td>
+<td><p><a class="reference external" href="https://github.com/NHERI-SimCenter/quoFEM/tree/master/Examples/E3PhysicsBasedGroundMotions/">Download</a></p></td>
 </tr>
 </tbody>
 </table>
-<p>This example features ground motion acceleration time histories simulated using the SW4 software and a detailed geophysical model of the San Francisco Bay Area by the Lawrence Livermore National Laboratory [doi: 10.1785/0220180261]. The ground motions are used to investigate the impact of a Mw7.0 earthquake on the Hayward fault on the city of Berkeley. Engineering Demand Parameters are simulated with an idealized MDOF building model; building performance is evaluated at the story-level based on the HAZUS earthquake damage and loss assessment methodology.</p>
+<p>This example features ground motion acceleration time histories simulated using the SW4 software and a detailed geophysical model of the San Francisco Bay Area by the Lawrence Livermore National Laboratory (<a class="reference external" href="https://doi.org/10.1785/0220180261">https://doi.org/10.1785/0220180261</a>). The ground motions are used to investigate the impact of a Mw7.0 earthquake on the Hayward fault on the city of Berkeley. Engineering Demand Parameters are simulated with an idealized MDOF building model; building performance is evaluated at the story-level based on the HAZUS earthquake damage and loss assessment methodology.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This example uses simulated ground motion time histories from the Lawrence Livermore National Lab. Due to size constraints, only the time histories near Berkeley are bundled with R2D. The complete set of simulated ground motions are available at <a class="reference external" href="https://berkeley.box.com/s/65113pqclc2j29ve9alita5kr7q2jnwc">https://berkeley.box.com/s/65113pqclc2j29ve9alita5kr7q2jnwc</a> . After downloading the zip file, extract its contents to the SW4 folder under input_data.</p>
 </div>
-<p><strong>The rest of the readme has not been updated yet!</strong></p>
 <div class="section" id="modeling-procedure">
 <h2>Modeling Procedure<a class="headerlink" href="#modeling-procedure" title="Permalink to this headline">¶</a></h2>
+<p>We now embark on our journey through the input panels of R2D, making known to the workflow builder how our procedure should be built. An input file which will automatically configure these steps can be downloaded <a class="reference external" href="https://github.com/NHERI-SimCenter/quoFEM/tree/master/Examples/E3PhysicsBasedGroundMotions/input.json">here</a>.</p>
 <ol class="arabic">
-<li><p><strong>GI</strong></p>
+<li><p><strong>GI</strong> The following figure shows how the general information panel is configured to handle the units of our analysis and provide output corresponding to demand parameters, damage measures, and decision variables.</p>
 <div class="figure align-center">
-<a class="reference internal image-reference" href="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-GI.png"><img alt="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-GI.png" src="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-GI.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../../../../../_images/r2dt-0007-GI.png"><img alt="../../../../../_images/r2dt-0007-GI.png" src="../../../../../_images/r2dt-0007-GI.png" style="width: 600px;" /></a>
 </div>
 </li>
-<li><p><strong>HAZ</strong></p>
+<li><p><strong>HAZ</strong> Next, in the hazard panel, the <a class="reference external" href="https://github.com/NHERI-SimCenter/quoFEM/tree/master/Examples/E3PhysicsBasedGroundMotions/input_data/SW4/EventGrid.csv">EventGrid.csv</a> file is loaded pointing to the suite of SW4 ground motions which are used for the procedure.</p>
 <div class="figure align-center">
-<a class="reference internal image-reference" href="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-HAZ.png"><img alt="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-HAZ.png" src="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-HAZ.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../../../../../_images/r2dt-0007-HAZ.png"><img alt="../../../../../_images/r2dt-0007-HAZ.png" src="../../../../../_images/r2dt-0007-HAZ.png" style="width: 600px;" /></a>
 </div>
 </li>
-<li><p><strong>ASD</strong></p>
+<li><p><strong>ASD</strong> Now a few buildings of interest can be singled out from the building inventory as shown in the following figure where the <strong>CSV to BIM</strong> option is selected as our backend.</p>
 <div class="figure align-center">
-<a class="reference internal image-reference" href="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-ASD.png"><img alt="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-ASD.png" src="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-ASD.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../../../../../_images/r2dt-0007-ASD.png"><img alt="../../../../../_images/r2dt-0007-ASD.png" src="../../../../../_images/r2dt-0007-ASD.png" style="width: 600px;" /></a>
 </div>
 </li>
 <li><p><strong>HTA</strong> Next, a hazard mapping algorithm is specified using the <strong>Nearest Neighbour</strong> method and the <strong>SimCenterEvent</strong> application, which are configured as show in the following figure with <strong>3</strong> samples in <strong>4</strong> neighborhoods.</p>
 <div class="figure align-center">
-<a class="reference internal image-reference" href="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-HTA.png"><img alt="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-HTA.png" src="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-HTA.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../../../../../_images/r2dt-0007-HTA.png"><img alt="../../../../../_images/r2dt-0007-HTA.png" src="../../../../../_images/r2dt-0007-HTA.png" style="width: 600px;" /></a>
 </div>
 </li>
-<li><p><strong>MOD</strong></p>
+<li><p><strong>MOD</strong> Now the building modeling procedure is configured with the <strong>MDOF-LU</strong> backend where standard deviations of <span class="math notranslate nohighlight">\(0.1\)</span> for stiffness and damping are defined.</p>
 <div class="figure align-center">
-<a class="reference internal image-reference" href="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-MOD.png"><img alt="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-MOD.png" src="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-MOD.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../../../../../_images/r2dt-0007-MOD.png"><img alt="../../../../../_images/r2dt-0007-MOD.png" src="../../../../../_images/r2dt-0007-MOD.png" style="width: 600px;" /></a>
 </div>
 </li>
 <li><p><strong>ANA</strong> In the analysis panel, <strong>OpenSees</strong> is selected from the primary dropdown.</p>
 <div class="figure align-center">
-<a class="reference internal image-reference" href="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-ANA.png"><img alt="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-ANA.png" src="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-ANA.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../../../../../_images/r2dt-0007-ANA.png"><img alt="../../../../../_images/r2dt-0007-ANA.png" src="../../../../../_images/r2dt-0007-ANA.png" style="width: 600px;" /></a>
 </div>
 </li>
-<li><p><strong>DL</strong></p>
+<li><p><strong>DL</strong>  The damage and loss panel is now used to configure the <strong>Pelicun</strong> backend. The <strong>HAZUS MH EQ</strong> damage and loss method is selected and configured as shown in the following figure.</p>
 <div class="figure align-center">
-<a class="reference internal image-reference" href="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-DL.png"><img alt="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-DL.png" src="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-DL.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../../../../../_images/r2dt-0007-DL.png"><img alt="../../../../../_images/r2dt-0007-DL.png" src="../../../../../_images/r2dt-0007-DL.png" style="width: 600px;" /></a>
 </div>
 </li>
-<li><p><strong>UQ</strong></p>
+<li><p><strong>UQ</strong> Now nearing the end of our journey, it is time to configure the venerable <strong>Dakota</strong> uncertainty quantification engine to carry out our lating hypercube sampling procedure <strong>3</strong> samples and an arbitrary seed for reproducibility.</p>
 <div class="figure align-center">
-<a class="reference internal image-reference" href="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-UQ.png"><img alt="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-UQ.png" src="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-UQ.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../../../../../_images/r2dt-0007-UQ.png"><img alt="../../../../../_images/r2dt-0007-UQ.png" src="../../../../../_images/r2dt-0007-UQ.png" style="width: 600px;" /></a>
 </div>
 </li>
-<li><p><strong>RV</strong></p>
+<li><p><strong>RV</strong> For the problem at hand we elect to decline the services of the random variable panel and proceed to our journey’s end with a swift click of the <strong>Run</strong> button.</p></li>
+<li><p><strong>VIZ</strong> The following snapshot of the visualization panel shows the assets which have been configured for this study, and their locations on a map of Berkeley, CA.</p>
 <div class="figure align-center">
-<a class="reference internal image-reference" href="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-RV.png"><img alt="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-RV.png" src="common/user_manual/examples/desktop/E3PhysicsBasedGroundMotions/figures/r2dt-0007-RV.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../../../../../_images/r2dt-0007-VIZ.png"><img alt="../../../../../_images/r2dt-0007-VIZ.png" src="../../../../../_images/r2dt-0007-VIZ.png" style="width: 600px;" /></a>
 </div>
 </li>
 <li><p><strong>RES</strong></p>

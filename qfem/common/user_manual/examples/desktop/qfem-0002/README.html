@@ -45,7 +45,7 @@
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
     <link rel="next" title="4.3. Reliability Analysis" href="../qfem-0003/README.html" />
-    <link rel="prev" title="4.1. Forward Propagation - OpenSees/Tcl" href="../qfem-0001/README.html" />
+    <link rel="prev" title="4.1. Two-Dimensional Truss: Sampling, Reliability and Sensitivity" href="../qfem-0001/README.html" />
 <script src="https://cdn.jsdelivr.net/npm/vega@5.12.1"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.13.1"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.8.0"></script>
@@ -116,7 +116,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../usage/desktop/usage.html">2. User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../troubleshooting/desktop/troubleshooting.html">3. Troubleshooting</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../examples.html">4. Examples</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../qfem-0001/README.html">4.1. Forward Propagation - OpenSees/Tcl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qfem-0001/README.html">4.1. Two-Dimensional Truss: Sampling, Reliability and Sensitivity</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">4.2. Forward Propagation - OpenSeesPy</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#uq-workflow">4.2.1. UQ Workflow</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#model-files">4.2.2. Model Files</a></li>
@@ -126,7 +126,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../qfem-0003/README.html">4.3. Reliability Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../qfem-0004/README.html">4.4. Sensitivity Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../qfem-0005/README.html">4.5. Basic modeling with Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../qfem-0008/README.html">4.6. Bayesian Calibration - Steel Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qfem-0008/README.html">4.6. Steel Frame Calibration with DREAM</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../qfem-0009/README.html">4.7. Two-Dimensional Truss: Global Sensitivity Analysis using SimCenterUQ Engine</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../qfem-0014/README.html">4.8. Steel Frame: Bayesian Calibration using TMCMC</a></li>
 </ul>
@@ -217,12 +217,12 @@
 <h1><span class="section-number">4.2. </span>Forward Propagation - OpenSeesPy<a class="headerlink" href="#forward-propagation-openseespy" title="Permalink to this headline">¶</a></h1>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 11%" />
-<col style="width: 89%" />
+<col style="width: 29%" />
+<col style="width: 71%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Problem files</p></td>
-<td><p><a class="reference external" href="https://github.com/claudioperez/SimCenterDocumentation/tree/examples/docs/common/user_manual/examples/desktop/quoFEM/src/quo-02">quo-02</a></p></td>
+<td><p><a class="reference external" href="https://github.com/NHERI-SimCenter/quoFEM/tree/master/Examples/qfem-0002/">Github</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -234,7 +234,10 @@ distributions of various random parameters.</p>
 truss structure shown in the following figure. Two input scripts are
 used to define a forward propagation procedure to be coordinated by
 quoFEM which will estimate the mean and standard deviation of the
-vertical displacement at node 3 using Latin hypercube sampling. <img alt="Truss schematic diagram" src="../../../../../_images/qfem-0002.png" /></p>
+vertical displacement at node 3 using Latin hypercube sampling.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../../../_images/qfem-0002.png"><img alt="../../../../../_images/qfem-0002.png" src="../../../../../_images/qfem-0002.png" style="width: 500px;" /></a>
+</div>
 <p>The following parameters are defined in the <strong>RV</strong> tab of quoFEM:</p>
 <ol class="arabic simple">
 <li><p>Elastic modulus, <code class="docutils literal notranslate"><span class="pre">E</span></code>: <strong>Weibull</strong> distribution with a scale

@@ -2,9 +2,9 @@
 Basic modeling with Python
 ==========================
 
-+-----------------+---------------------------------------------+
-| Problem files   | :github:`Github <Examples/E1BasicHAZUS/>`   |
-+-----------------+---------------------------------------------+
++-----------------+--------------------------------------------+
+| Problem files   | :github:`Download <Examples/qfem-0005/>`   |
++-----------------+--------------------------------------------+
 
 This example illustrates how Python scripting can be used with quoFEM to
 express general mathematical models without the use of a dedicated
@@ -17,7 +17,8 @@ expression:
 .. math::  g(x, y)=(a-x)^{2}+b\left(y-x^{2}\right)^{2} 
 
 .. figure:: qfem-0005.png
-   :width: 500
+   :width: 500px 
+   :align: center
 
 A forward propagation analysis will be conducted to numerically
 integrate the first and second moments of a random variable whose value

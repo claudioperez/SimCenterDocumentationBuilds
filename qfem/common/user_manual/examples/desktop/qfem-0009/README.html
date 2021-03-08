@@ -45,7 +45,7 @@
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
     <link rel="next" title="4.8. Steel Frame: Bayesian Calibration using TMCMC" href="../qfem-0014/README.html" />
-    <link rel="prev" title="4.6. Bayesian Calibration - Steel Frame" href="../qfem-0008/README.html" />
+    <link rel="prev" title="4.6. Steel Frame Calibration with DREAM" href="../qfem-0008/README.html" />
 <script src="https://cdn.jsdelivr.net/npm/vega@5.12.1"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.13.1"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.8.0"></script>
@@ -116,12 +116,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../usage/desktop/usage.html">2. User Guide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../troubleshooting/desktop/troubleshooting.html">3. Troubleshooting</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../examples.html">4. Examples</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../qfem-0001/README.html">4.1. Forward Propagation - OpenSees/Tcl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qfem-0001/README.html">4.1. Two-Dimensional Truss: Sampling, Reliability and Sensitivity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../qfem-0002/README.html">4.2. Forward Propagation - OpenSeesPy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../qfem-0003/README.html">4.3. Reliability Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../qfem-0004/README.html">4.4. Sensitivity Analysis</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../qfem-0005/README.html">4.5. Basic modeling with Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../qfem-0008/README.html">4.6. Bayesian Calibration - Steel Frame</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qfem-0008/README.html">4.6. Steel Frame Calibration with DREAM</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">4.7. Two-Dimensional Truss: Global Sensitivity Analysis using SimCenterUQ Engine</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#uq-workflow">4.7.1. UQ Workflow</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#model-files">4.7.2. Model Files</a></li>
@@ -219,12 +219,12 @@
 <h1><span class="section-number">4.7. </span>Two-Dimensional Truss: Global Sensitivity Analysis using SimCenterUQ Engine<a class="headerlink" href="#two-dimensional-truss-global-sensitivity-analysis-using-simcenteruq-engine" title="Permalink to this headline">¶</a></h1>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 48%" />
-<col style="width: 52%" />
+<col style="width: 28%" />
+<col style="width: 72%" />
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Problem files</p></td>
-<td><p><a href="#id1"><span class="problematic" id="id2">:qfem-09:`/`</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/NHERI-SimCenter/quoFEM/tree/master/Github &lt;Examples/qfem-0009/">GithubGithub &lt;Examples/qfem-0009/</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -254,9 +254,9 @@ deviation <span class="math notranslate nohighlight">\((\sigma)\)</span> of <spa
 distribution with a mean <span class="math notranslate nohighlight">\((\mu)\)</span> of <span class="math notranslate nohighlight">\(500.0\)</span>, standard
 deviation <span class="math notranslate nohighlight">\((\sigma)\)</span> of <span class="math notranslate nohighlight">\(100.0\)</span>,</p></li>
 </ol>
-<div class="figure align-center" id="id3">
+<div class="figure align-center" id="id1">
 <img alt="Random variables for simple truss." src="../../../../../_images/trussSensitivity-input-SimUQ.png" />
-<p class="caption"><span class="caption-number">Fig. 4.7.1 </span><span class="caption-text">Random variables for simple truss.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 4.7.1 </span><span class="caption-text">Random variables for simple truss.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 </div>
 <p>The vertical displacement at node 2 is considered as a response. It is specified in the <strong>QoI</strong> tab as <code class="docutils literal notranslate"><span class="pre">Node_2_Disp_2</span></code>.</p>
 <div class="section" id="uq-workflow">
@@ -301,16 +301,16 @@ is supplied to the <strong>Postprocess File</strong> field of the <strong>FEM</s
 <p>Once the analysis is complete the <strong>RES</strong> panel will be automatically
 selected and the results will be displayed as shown in the following
 figure:</p>
-<div class="figure align-center" id="id4">
+<div class="figure align-center" id="id2">
 <img alt="Sensitivity analysis results for simple truss." src="../../../../../_images/trussSensitivity-RES-SimUQ.png" />
-<p class="caption"><span class="caption-number">Fig. 4.7.2 </span><span class="caption-text">Sensitivity analysis results for simple truss.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 4.7.3.1 </span><span class="caption-text">Sensitivity analysis results for simple truss.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 <div class="section" id="comparison-with-dakota-engine">
 <h2><span class="section-number">4.7.4. </span>Comparison with Dakota engine<a class="headerlink" href="#comparison-with-dakota-engine" title="Permalink to this headline">¶</a></h2>
 <p>QuoFEM also supports MCS-based sensitivity analysis method offered in Dakota engine. In this section, the sensitivity analysis is conducted using different number of samples, and the results were compared with those from Dakota engine.</p>
-<table class="docutils align-center" id="id5">
-<caption><span class="caption-number">Table 4.7.1 </span><span class="caption-text">SimCenterUQ: Sensitivity indices from different number of samples</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<table class="docutils align-center" id="id3">
+<caption><span class="caption-number">Table 4.7.4.1 </span><span class="caption-text">SimCenterUQ: Sensitivity indices from different number of samples</span><a class="headerlink" href="#id3" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 17%" />
 <col style="width: 17%" />
@@ -359,8 +359,8 @@ figure:</p>
 </tr>
 </tbody>
 </table>
-<table class="docutils align-center" id="id6">
-<caption><span class="caption-number">Table 4.7.2 </span><span class="caption-text">Dakota: Sensitivity indices from different number of samples (the first raw is the user-specified number of samples and the second raw is the actual number of simulation calls)</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<table class="docutils align-center" id="id4">
+<caption><span class="caption-number">Table 4.7.4.2 </span><span class="caption-text">Dakota: Sensitivity indices from different number of samples (the first raw is the user-specified number of samples and the second raw is the actual number of simulation calls)</span><a class="headerlink" href="#id4" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 17%" />
 <col style="width: 17%" />
@@ -421,19 +421,19 @@ figure:</p>
 <div class="section" id="result-with-correlated-inputs">
 <h2><span class="section-number">4.7.5. </span>Result with correlated inputs<a class="headerlink" href="#result-with-correlated-inputs" title="Permalink to this headline">¶</a></h2>
 <p>Consider the case with correlated random variables. For example, below shows correlation matrix where the correlation between the variables <code class="docutils literal notranslate"><span class="pre">Au</span></code> and <code class="docutils literal notranslate"><span class="pre">Ao</span></code> are <span class="math notranslate nohighlight">\(\rho=0.5\)</span>.</p>
-<div class="figure align-center" id="id7">
+<div class="figure align-center" id="id5">
 <img alt="Sensitivity analysis results for simple truss." src="../../../../../_images/trussSensitivity-corr.png" />
-<p class="caption"><span class="caption-number">Fig. 4.7.3 </span><span class="caption-text">Correlation matrix</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 4.7.5.1 </span><span class="caption-text">Correlation matrix</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 <p>The group-wise Sobol indices for {<span class="math notranslate nohighlight">\(Au,Ao\)</span>} can be defined at the <strong>QoI</strong> tab.</p>
-<div class="figure align-center" id="id8">
+<div class="figure align-center" id="id6">
 <img alt="Sensitivity analysis results for simple truss." src="../../../../../_images/trussSensitivity-advanced.png" />
-<p class="caption"><span class="caption-number">Fig. 4.7.4 </span><span class="caption-text">Setting advanced options for group-wise Sobol indices</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 4.7.5.2 </span><span class="caption-text">Setting advanced options for group-wise Sobol indices</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
 <p>The results of sensitivity analysis:</p>
-<div class="figure align-center" id="id9">
+<div class="figure align-center" id="id7">
 <img alt="Sensitivity analysis results for simple truss." src="../../../../../_images/trussSensitivity-RES-SimUQ2.png" />
-<p class="caption"><span class="caption-number">Fig. 4.7.5 </span><span class="caption-text">Sensitivity analysis results for simple truss (with correlations)</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 4.7.5.3 </span><span class="caption-text">Sensitivity analysis results for simple truss (with correlations)</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
