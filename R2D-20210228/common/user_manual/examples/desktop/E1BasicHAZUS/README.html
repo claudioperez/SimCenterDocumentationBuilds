@@ -218,13 +218,13 @@
 </tr>
 </tbody>
 </table>
-<p>This earthquake example demonstrates rapid analysis capabilities with the HAZUS earthquake damage and loss assessment methodology. Building-level Damage and Losses (D&amp;L) are calculated directly from Intensity Measures (IM) for 100 assets. The IM field that represents peak ground acceleration in the city of San Francisco, CA, from an Mw7.2 event on the San Andreas fault, was obtained from Probabilistic Seismic Hazard Analysis (PSHA).</p>
+<p>This earthquake example demonstrates rapid analysis capabilities with the HAZUS earthquake damage and loss assessment methodology. Building-level Damage and Losses (D&amp;L) are calculated directly from Intensity Measures (IM) for 25 assets. The IM field that represents peak ground acceleration in the city of San Francisco, CA, from an Mw7.2 event on the San Andreas fault, was obtained from Probabilistic Seismic Hazard Analysis (PSHA).</p>
 <div class="figure align-center">
-<a class="reference internal image-reference" href="../../../../../_images/r2dt-0006.png"><img alt="../../../../../_images/r2dt-0006.png" src="../../../../../_images/r2dt-0006.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="../../../../../_images/r2dt-0006-1.png"><img alt="../../../../../_images/r2dt-0006-1.png" src="../../../../../_images/r2dt-0006-1.png" style="width: 400px;" /></a>
 </div>
-<p>We now embark on our journey through the input panels of R2D, making known to the workflow builder how our procedure should be built.</p>
+<p>This study will be defined by sequentially traversing the input panels of the <strong>R2D</strong> interface. However, as outlined in the online user’s manual, these procedures can be serialized to and loaded immediately from a JSON file, which for this example may be found <a class="reference external" href="https://github.com/NHERI-SimCenter/R2DTool/tree/master/Examples/E3PhysicsBasedGroundMotions/input.json">here</a>.</p>
 <ol class="arabic">
-<li><p><strong>GI</strong> The unit system and asset type are prescribed in this panel, and we’re interested in the building engineering demand parameters, damage measures, and the resulting decision variables.</p>
+<li><p><strong>GI</strong> The unit system and asset type are prescribed in this panel, and we’re interested in the <strong>building engineering demand parameters</strong>, <strong>damage measures</strong>, and the resulting <strong>decision variables</strong>.</p>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../../../../../_images/r2dt-0006-GI.png"><img alt="../../../../../_images/r2dt-0006-GI.png" src="../../../../../_images/r2dt-0006-GI.png" style="width: 600px;" /></a>
 </div>
@@ -258,7 +258,15 @@
 <li><p>The <strong>UQ</strong> and <strong>RV</strong> panels will be left empty for this procedure.</p></li>
 <li><p><strong>VIZ</strong> The visualization panel in the following figure shows the location of the assets considered by this example.</p>
 <div class="figure align-center">
-<a class="reference internal image-reference" href="common/user_manual/examples/desktop/E1BasicHAZUS/figures/r2dt-0006-VIZ.png"><img alt="common/user_manual/examples/desktop/E1BasicHAZUS/figures/r2dt-0006-VIZ.png" src="common/user_manual/examples/desktop/E1BasicHAZUS/figures/r2dt-0006-VIZ.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../../../../../_images/r2dt-0006-VIZ.png"><img alt="../../../../../_images/r2dt-0006-VIZ.png" src="../../../../../_images/r2dt-0006-VIZ.png" style="width: 600px;" /></a>
+</div>
+</li>
+<li><p><strong>RES</strong> The final step is to click the <strong>Run</strong> button at the bottom of the application, after which the results panel will be populated with a variety of widgets which can be configured to one’s heart’s content as shown below:</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../../../_images/r2dt-0006.png"><img alt="../../../../../_images/r2dt-0006.png" src="../../../../../_images/r2dt-0006.png" style="width: 600px;" /></a>
+</div>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="../../../../../_images/r2dt-0006-FULL.png"><img alt="../../../../../_images/r2dt-0006-FULL.png" src="../../../../../_images/r2dt-0006-FULL.png" style="width: 600px;" /></a>
 </div>
 </li>
 </ol>

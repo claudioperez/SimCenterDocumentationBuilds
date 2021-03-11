@@ -218,11 +218,11 @@
 </tr>
 </tbody>
 </table>
-<p>This example presents a coupled damage assessment for ground shaking and liquefaction hazards. To infer liquefaction, estimates of horizontal spreading and vertical settlement are generated from PGA values obtained through PSHA. These three intensity measures form the basis of input to a building-level, HAZUS-based damage and loss assessment that accounts for potential collapses due to liquefaction. Approximately 14,000 buildings are considered in the city of Alameda, CA.</p>
+<p>This example presents a coupled damage assessment for ground shaking and liquefaction hazards. To infer liquefaction, estimates of horizontal spreading and vertical settlement are generated from PGA values obtained through PSHA. These three intensity measures form the basis of input to a building-level, HAZUS-based damage and loss assessment that accounts for potential collapses due to liquefaction.</p>
 <ol class="arabic">
 <li><p><strong>VIZ</strong> This example shows simulation for pseudo earthquake scenarios in Bay Area. The damage and loss of a sample of buildings in the Alameda County due to the soil liquefaction are estimated.  The results presented herein are only for demonstrating the use of R2DTool and do not serve as an accurate representation of the real losses.</p>
 <div class="figure align-center">
-<a class="reference internal image-reference" href="../../../../../_images/r2dt-0002-VIZ.png"><img alt="../../../../../_images/r2dt-0002-VIZ.png" src="../../../../../_images/r2dt-0002-VIZ.png" style="width: 600px;" /></a>
+<a class="reference internal image-reference" href="../../../../../_images/r2dt-0002.png"><img alt="../../../../../_images/r2dt-0002.png" src="../../../../../_images/r2dt-0002.png" style="width: 600px;" /></a>
 </div>
 </li>
 <li><p><strong>GI</strong> Next, the general information panel is used to broadly characterize the problem at hand. In this example, the imperial force and length units are used, and we’re interested in the engineering demand parameters, damage measures, and the resulting decision variable (e.g., expected replacement cost).</p>
@@ -256,14 +256,7 @@
 <a class="reference internal image-reference" href="../../../../../_images/r2dt-0002-DL.png"><img alt="../../../../../_images/r2dt-0002-DL.png" src="../../../../../_images/r2dt-0002-DL.png" style="width: 600px;" /></a>
 </div>
 </li>
-<li><p><strong>UQ</strong></p>
-<div class="figure align-center">
-<a class="reference internal image-reference" href="../../../../../_images/r2dt-0002-UQ.png"><img alt="../../../../../_images/r2dt-0002-UQ.png" src="../../../../../_images/r2dt-0002-UQ.png" style="width: 600px;" /></a>
-</div>
-</li>
-<li><p><strong>RV</strong></p>
-<p>The random variable panel will be left empty for this example.</p>
-</li>
+<li><p><strong>UQ/RV</strong> The random variable and uncertianty panels will be left empty for this example.</p></li>
 <li><p><strong>RES</strong> The analysis outputs for the selected 20 buildings are show in the figure below. The buildings may experience severe damage states (Damage State 3 or 4 per HAZUS). The repair costs range from 3% to 7% of the total replacement costs, and the repair time range from 9 to more than 20 days.</p>
 <div class="figure align-center">
 <a class="reference internal image-reference" href="../../../../../_images/r2dt-0002-RES.png"><img alt="../../../../../_images/r2dt-0002-RES.png" src="../../../../../_images/r2dt-0002-RES.png" style="width: 600px;" /></a>
