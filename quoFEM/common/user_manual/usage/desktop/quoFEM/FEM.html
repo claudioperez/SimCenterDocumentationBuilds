@@ -216,7 +216,7 @@
 applications. Currently, there are four options: OpenSees, FEAPpv, OpenSeesPy,
 and a custom user-specified application.</p>
 <div class="align-center figure" id="id3">
-<span id="figfem"></span><img alt="../../../../../_images/FEM2.png" src="../../../../../_images/FEM2.png" />
+<span id="figfem"></span><img alt="../../../../../_images/FEM.png" src="../../../../../_images/FEM.png" />
 <p class="caption"><span class="caption-number">Fig. 2.2.1 </span><span class="caption-text">Input for the <strong>FEM</strong> tab.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </div>
 <div class="admonition note">
@@ -232,75 +232,6 @@ and a custom user-specified application.</p>
 <ol class="arabic simple">
 <li><p><strong>Input Script</strong>: The user must specify a main input script. When entered the application will parse this file looking for variables set with the <code class="docutils literal notranslate"><span class="pre">pset</span></code> option (a unique set command to the OpenSees interpreter that is used to identify parameter values). For each variable whose value is set with <code class="docutils literal notranslate"><span class="pre">pset</span></code>, the program will auto populate the variable in the <strong>RV</strong> tab.</p></li>
 </ol>
-<div class="highlight-tcl notranslate"><div class="highlight"><pre><span></span><span class="c"># units kN &amp; mm</span>
-
-<span class="c">#</span>
-<span class="c"># set some parameters</span>
-<span class="c">#</span>
-
-<span class="nv">pset</span> E <span class="mi">205</span>
-<span class="nv">pset</span> P <span class="mi">25</span>
-<span class="nv">pset</span> Au <span class="mi">500</span>
-<span class="nv">pset</span> Ao <span class="mi">250</span>
-
-<span class="c">#</span>
-<span class="c"># build the model</span>
-<span class="c">#</span>
-
-<span class="nv">model</span> Basic <span class="o">-</span>ndm <span class="mi">2</span> <span class="o">-</span>ndf <span class="mi">2</span>
-
-<span class="nv">node</span> <span class="mi">1</span>     <span class="mi">0</span>    <span class="mi">0</span>
-<span class="nv">node</span> <span class="mi">2</span>  <span class="mi">4000</span>    <span class="mi">0</span>
-<span class="nv">node</span> <span class="mi">3</span>  <span class="mi">8000</span>    <span class="mi">0</span>
-<span class="nv">node</span> <span class="mi">4</span> <span class="mi">12000</span>    <span class="mi">0</span>
-<span class="nv">node</span> <span class="mi">5</span>  <span class="mi">4000</span> <span class="mi">4000</span>
-<span class="nv">node</span> <span class="mi">6</span>  <span class="mi">8000</span> <span class="mi">4000</span>
-
-<span class="nv">fix</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span>
-<span class="nv">fix</span> <span class="mi">4</span> <span class="mi">0</span> <span class="mi">1</span>
-
-<span class="nv">uniaxialMaterial</span> Elastic <span class="mi">1</span> <span class="nv">$E</span>
-
-<span class="nv">element</span> truss <span class="mi">1</span> <span class="mi">1</span> <span class="mi">2</span> <span class="nv">$Ao</span> <span class="mi">1</span>
-<span class="nv">element</span> truss <span class="mi">2</span> <span class="mi">2</span> <span class="mi">3</span> <span class="nv">$Ao</span> <span class="mi">1</span>
-<span class="nv">element</span> truss <span class="mi">3</span> <span class="mi">3</span> <span class="mi">4</span> <span class="nv">$Ao</span> <span class="mi">1</span>
-<span class="nv">element</span> truss <span class="mi">4</span> <span class="mi">1</span> <span class="mi">5</span> <span class="nv">$Au</span> <span class="mi">1</span>
-<span class="nv">element</span> truss <span class="mi">5</span> <span class="mi">5</span> <span class="mi">6</span> <span class="nv">$Au</span> <span class="mi">1</span>
-<span class="nv">element</span> truss <span class="mi">6</span> <span class="mi">6</span> <span class="mi">4</span> <span class="nv">$Au</span> <span class="mi">1</span>
-<span class="nv">element</span> truss <span class="mi">7</span> <span class="mi">2</span> <span class="mi">5</span> <span class="nv">$Ao</span> <span class="mi">1</span>
-<span class="nv">element</span> truss <span class="mi">8</span> <span class="mi">3</span> <span class="mi">6</span> <span class="nv">$Ao</span> <span class="mi">1</span>
-<span class="nv">element</span> truss <span class="mi">9</span> <span class="mi">5</span> <span class="mi">3</span> <span class="nv">$Ao</span> <span class="mi">1</span>
-<span class="nv">timeSeries</span> Linear <span class="mi">1</span>
-<span class="nv">pattern</span> Plain <span class="mi">1</span> <span class="mi">1</span> <span class="k">{</span>
-    <span class="nb">load</span> <span class="mi">2</span> <span class="mi">0</span> <span class="k">[expr</span> <span class="o">-</span><span class="nv">$P</span><span class="k">]</span>
-    <span class="nb">load</span> <span class="mi">3</span> <span class="mi">0</span> <span class="k">[expr</span> <span class="o">-</span><span class="nv">$P</span><span class="k">]</span>
-<span class="k">}</span>
-
-<span class="c">#</span>
-<span class="c"># create a recorder</span>
-<span class="c">#</span>
-
-<span class="nv">recorder</span> Node <span class="o">-</span>file node.out <span class="o">-</span>scientific <span class="o">-</span>precision <span class="mi">10</span> <span class="o">-</span>node <span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span> <span class="o">-</span>dof <span class="mi">1</span> <span class="mi">2</span> disp
-
-<span class="c">#</span>
-<span class="c"># build and perform the analysis</span>
-<span class="c">#</span>
-
-<span class="nv">algorithm</span> Linear
-<span class="nv">integrator</span> LoadControl <span class="mf">1.0</span>
-<span class="nv">system</span> ProfileSPD
-<span class="nv">numberer</span> RCM
-<span class="nv">constraints</span> Plain
-<span class="nv">analysis</span> Static
-<span class="nv">analyze</span> <span class="mi">1</span>
-
-<span class="c">#</span>
-<span class="c"># remove the recorders</span>
-<span class="c">#</span>
-
-<span class="nv">remove</span> recorders
-</pre></div>
-</div>
 <ol class="arabic simple" start="2">
 <li><p><strong>Postprocess Script</strong>: This is an optional entry where the user has the option of specifying either a tcl script or a Python script that will be used to postprocess the results and create a <code class="docutils literal notranslate"><span class="pre">results.out</span></code> file after the main script runs.</p></li>
 </ol>
@@ -322,62 +253,6 @@ and a custom user-specified application.</p>
 <ol class="arabic simple">
 <li><p><strong>Input File</strong>: The user must specify a main input file.  A part of this file may contain variables set in the <code class="docutils literal notranslate"><span class="pre">PARA</span></code> section. The variables in this section will be read by the UI when the file is entered and will be autopopulated in the <strong>RV</strong> tab. For example if a file containing the following code was specified:</p></li>
 </ol>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">FEAP</span> <span class="o">*</span> <span class="o">*</span> <span class="n">Elastic</span> <span class="n">Truss</span>
-<span class="mi">6</span> <span class="mi">9</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span> <span class="mi">2</span>
-
-<span class="n">PARAmeter</span>
-<span class="n">E</span> 	<span class="o">=</span> <span class="mi">205</span>
-<span class="n">P</span> 	<span class="o">=</span> <span class="mi">25</span>
-<span class="n">Au</span>	<span class="o">=</span> <span class="mi">500</span>
-<span class="n">Ao</span> 	<span class="o">=</span> <span class="mi">250</span>
-
-<span class="n">MATErial</span> <span class="mi">1</span>
-<span class="n">TRUSs</span>
-<span class="n">ELAStic</span> <span class="n">isotropic</span> <span class="n">E</span>
-<span class="n">CROSs</span> <span class="n">section</span> <span class="n">Ao</span>
-
-<span class="n">MATErial</span> <span class="mi">2</span>
-<span class="n">TRUSs</span>
-<span class="n">ELAStic</span> <span class="n">isotropic</span> <span class="n">E</span>
-<span class="n">CROSs</span> <span class="n">section</span> <span class="n">Au</span>
-
-<span class="n">COORdinates</span>
-<span class="mi">1</span>	<span class="mi">0</span>	<span class="mf">0.0</span>		<span class="mf">0.0</span>
-<span class="mi">2</span>	<span class="mi">0</span>	<span class="mf">4000.0</span>		<span class="mf">0.0</span>
-<span class="mi">3</span>	<span class="mi">0</span>	<span class="mf">8000.0</span>		<span class="mf">0.0</span>
-<span class="mi">4</span>	<span class="mi">0</span>	<span class="mf">12000.0</span>		<span class="mf">0.0</span>
-<span class="mi">5</span>	<span class="mi">0</span>	<span class="mf">4000.0</span>		<span class="mf">4000.0</span>
-<span class="mi">6</span>	<span class="mi">0</span>	<span class="mf">8000.0</span>		<span class="mf">4000.0</span>
-
-<span class="n">ELEMents</span>
-<span class="mi">1</span>	<span class="mi">0</span>	<span class="mi">1</span>	<span class="mi">1</span>	<span class="mi">2</span>
-<span class="mi">2</span>	<span class="mi">0</span>	<span class="mi">1</span>	<span class="mi">2</span>	<span class="mi">3</span>
-<span class="mi">3</span>	<span class="mi">0</span>	<span class="mi">1</span>	<span class="mi">3</span>	<span class="mi">4</span>
-<span class="mi">4</span>	<span class="mi">0</span>	<span class="mi">2</span>	<span class="mi">1</span>	<span class="mi">5</span>
-<span class="mi">5</span>	<span class="mi">0</span>	<span class="mi">2</span>	<span class="mi">5</span>	<span class="mi">6</span>
-<span class="mi">6</span>	<span class="mi">0</span>	<span class="mi">2</span>	<span class="mi">6</span>	<span class="mi">4</span>
-<span class="mi">7</span>	<span class="mi">0</span>	<span class="mi">1</span>	<span class="mi">2</span>	<span class="mi">5</span>
-<span class="mi">8</span>	<span class="mi">0</span>	<span class="mi">1</span>	<span class="mi">3</span>	<span class="mi">6</span>
-<span class="mi">9</span>	<span class="mi">0</span>	<span class="mi">1</span>	<span class="mi">5</span>	<span class="mi">3</span>
-
-<span class="n">BOUNdary</span>
-<span class="mi">1</span>	<span class="mi">0</span>	<span class="mi">1</span>	<span class="mi">1</span>
-<span class="mi">4</span>	<span class="mi">0</span>	<span class="mi">0</span>	<span class="mi">1</span>
-
-<span class="n">FORCe</span>
-<span class="mi">2</span>	<span class="mi">0</span>	<span class="mf">0.0</span>	<span class="o">-</span><span class="n">P</span>
-<span class="mi">3</span>	<span class="mi">0</span>	<span class="mf">0.0</span>	<span class="o">-</span><span class="n">P</span>
-
-<span class="n">END</span>
-<span class="n">BATCh</span>
-<span class="n">TANG</span>
-<span class="n">FORM</span>
-<span class="n">SOLVe</span>
-<span class="n">DISPlacement</span> <span class="n">ALL</span>
-<span class="n">END</span>
-<span class="n">STOP</span>
-</pre></div>
-</div>
 <p>then the parameters <code class="docutils literal notranslate"><span class="pre">E</span></code>, <code class="docutils literal notranslate"><span class="pre">P</span></code>, <code class="docutils literal notranslate"><span class="pre">Ao</span></code>, <code class="docutils literal notranslate"><span class="pre">Au</span></code> would be read by the application and placed in the <strong>RV</strong> tab.</p>
 <ol class="arabic simple" start="2">
 <li><p><strong>Postprocess Script</strong>: The user must provide the name of the Python script that will run when FEAPpv has finished executing. This Python script must load the output file from FEAPpv and create the <code class="docutils literal notranslate"><span class="pre">results.out</span></code> file. Currently the user has no control over the name of the output file created by FEAPpv, <code class="docutils literal notranslate"><span class="pre">SimCenterOut.txt</span></code>. It is this file the post-process script must open and use to create the <code class="docutils literal notranslate"><span class="pre">results.out</span></code> file.</p></li>
@@ -393,14 +268,6 @@ and a custom user-specified application.</p>
 <li><p><strong>Postprocess Script</strong>. This must be a Python script which is provided the QoI variable names when started. This entry can be left blank if the main script creates a <code class="docutils literal notranslate"><span class="pre">results.out</span></code> file with a single line as described for the OpenSees application.</p></li>
 <li><p><strong>Parameters File</strong> (Optional). This file allows for the automatic population of the <strong>RV</strong> tab with any variables found in the file. For example if the file contained the following:</p></li>
 </ol>
-<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="c1"># set some parameters</span>
-
-<span class="n">E</span> <span class="o">=</span> <span class="mi">205</span>
-<span class="n">P</span> <span class="o">=</span> <span class="mi">25</span>
-<span class="n">Ao</span> <span class="o">=</span> <span class="mi">250</span>
-<span class="n">Au</span> <span class="o">=</span> <span class="mi">500</span>
-</pre></div>
-</div>
 <p>The <strong>RV</strong> tab would be populated with the <code class="docutils literal notranslate"><span class="pre">E</span></code>, <code class="docutils literal notranslate"><span class="pre">P</span></code>, <code class="docutils literal notranslate"><span class="pre">Ao</span></code>, and <code class="docutils literal notranslate"><span class="pre">Au</span></code> random variables.</p>
 </div>
 <div class="section" id="custom">

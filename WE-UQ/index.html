@@ -1,0 +1,419 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Wind Engineering with Uncertainty Quantification Application &mdash; Wind Engineering with Uncertainty Quantification  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/jquery-1.11.0.min.js"></script>
+        <script src="_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
+        <script src="_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="1. About" href="common/user_manual/about/WEUQ/about.html" />
+<script src="https://cdn.jsdelivr.net/npm/vega@5.12.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@4.13.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.8.0"></script>
+<style media="screen">.vega-actions a {margin-right: 5px;}</style>
+<link href="_static/css/bootstrap.css" rel="stylesheet">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #F2F2F2" >
+          
+<a href="https://simcenter.designsafe-ci.org/" style="margin-bottom: 0px;">
+  <img src="_static/img/SimCenter-Only.png" class="logo" alt="Org-Logo" />
+</a>
+<hr style="margin: 0px;">
+
+  <a href="#">
+
+
+
+  
+  <img src="_static/WE-UQ-Logo.png" class="logo" alt="Logo"/>
+
+</a>
+
+
+  
+  
+
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="common/user_manual/about/WEUQ/about.html">1. About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/front-matter/ack.html">2. Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/front-matter/license.html">3. Copyright and License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/front-matter/glossary.html">4. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/front-matter/abbreviations.html">5. Abbreviations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Manual</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="common/user_manual/installation/desktop/installation.html">1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/user_manual/usage/desktop/usage.html">2. User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/user_manual/troubleshooting/desktop/troubleshooting.html">3. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/user_manual/examples/desktop/examples.html">4. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/user_manual/bugs.html">5. Bugs &amp; Feature Requests</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Manual</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="common/technical_manual/desktop/technical_manual.html">1. Technical Manual</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Manual</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="common/developer_manual/how_to_build/desktop/how_to_build.html">1. How to Build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/developer_manual/architecture/desktop/architecture.html">2. Software Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/developer_manual/how_to_extend/desktop/how_to_extend.html">3. How to Extend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/developer_manual/verification/desktop/verification.html">4. Verification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/developer_manual/coding_style/desktop/coding_style.html">5. Coding Style</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Wind Engineering with Uncertainty Quantification</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Wind Engineering with Uncertainty Quantification Application</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="full-tool-name">
+<h1>Wind Engineering with Uncertainty Quantification Application<a class="headerlink" href="#full-tool-name" title="Permalink to this headline">¶</a></h1>
+<p><strong>Frank McKenna</strong> , <strong>Peter Mackenzie-Helnwein</strong> , <strong>Wael Elhaddad</strong> , <strong>Jiawei Wan</strong> , <strong>Michael Gardner</strong> , <strong>Dae Kun Kwon</strong></p>
+<p>The Wind Engineering with Uncertainty Quantification Application (WE-UQ app) is an open-source research application that can be used to predict the response of a building subjected to wind loading events. The application is focused on quantifying the uncertainties in the predicted response, given the that the uncertainties in models, wind loads, and analysis. The computations are performed in a workflow application that will run on either the users local machine or on a high performance computer made available by <a class="reference external" href="https://designsafe-ci.org">DesignSafe</a>.</p>
+<p>This document covers the features and capabilities of Version 2.0 of the tool. Users are encouraged to comment on what additional features and capabilities they would like to see in future versions of the application through the <a class="reference external" href="https://simcenter-messageboard.designsafe-ci.org/smf/index.php?board=5.0">Message Board</a>.</p>
+<div class="toctree-wrapper compound" id="lbl-front-matter">
+<p class="caption"><span class="caption-text">About</span><a class="headerlink" href="#lbl-front-matter" title="Permalink to this toctree">¶</a></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="common/user_manual/about/WEUQ/about.html">1. About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/front-matter/ack.html">2. Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/front-matter/license.html">3. Copyright and License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/front-matter/glossary.html">4. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/front-matter/abbreviations.html">5. Abbreviations</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">User Manual</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="common/user_manual/installation/desktop/installation.html">1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/user_manual/usage/desktop/usage.html">2. User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/user_manual/troubleshooting/desktop/troubleshooting.html">3. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/user_manual/examples/desktop/examples.html">4. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/user_manual/bugs.html">5. Bugs &amp; Feature Requests</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound" id="lbl-technical-manual">
+<p class="caption"><span class="caption-text">Technical Manual</span><a class="headerlink" href="#lbl-technical-manual" title="Permalink to this toctree">¶</a></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="common/technical_manual/desktop/technical_manual.html">1. Technical Manual</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound" id="lbl-developer-manual">
+<p class="caption"><span class="caption-text">Developer Manual</span><a class="headerlink" href="#lbl-developer-manual" title="Permalink to this toctree">¶</a></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="common/developer_manual/how_to_build/desktop/how_to_build.html">1. How to Build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/developer_manual/architecture/desktop/architecture.html">2. Software Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/developer_manual/how_to_extend/desktop/how_to_extend.html">3. How to Extend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/developer_manual/verification/desktop/verification.html">4. Verification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="common/developer_manual/coding_style/desktop/coding_style.html">5. Coding Style</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="contact">
+<h1>Contact<a class="headerlink" href="#contact" title="Permalink to this headline">¶</a></h1>
+<p>Frank McKenna, NHERI SimCenter, UC Berkeley, <a class="reference external" href="mailto:fmckenna&#37;&#52;&#48;berkeley&#46;edu">fmckenna<span>&#64;</span>berkeley<span>&#46;</span>edu</a></p>
+</div>
+<div class="section" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<p id="bibtex-bibliography-index-0"><dl class="citation">
+<dt class="bibtex label" id="aboshosha2015"><span class="brackets">15</span></dt>
+<dd><p>Haitham Aboshosha, Ahmed Elshaer, Girma T Bitsuamlak, and Ashraf El Damatty. Consistent inflow turbulence generator for les evaluation of wind-induced responses for tall buildings. <em>Journal of Wind Engineering and Industrial Aerodynamics</em>, 142:198–216, 2015.</p>
+</dd>
+<dt class="bibtex label" id="castro2017"><span class="brackets">14</span></dt>
+<dd><p>Hugo G Castro, Rodrigo R Paz, Javier L Mroginski, and Mario A Storti. Evaluation of the proper coherence representation in random flow generation based methods. <em>Journal of Wind Engineering and Industrial Aerodynamics</em>, 168:211–227, 2017.</p>
+</dd>
+<dt class="bibtex label" id="davenport1967dependence"><span class="brackets">4</span></dt>
+<dd><p>AG Davenport. The dependence of wind loading on meteorological parameters. In <em>Proc. of Int. Res. Seminar, Wind Effects On Buildings &amp; Structures, NRC, Ottawa</em>. 1967.</p>
+</dd>
+<dt class="bibtex label" id="guan2020python"><span class="brackets">GBS20</span></dt>
+<dd><p>Xingquan Guan, Henry Burton, and Thomas Sabol. Python-based computational platform to automate seismic design, nonlinear structural model construction and analysis of steel moment resisting frames. <em>Engineering Structures</em>, 224:111199, 2020.</p>
+</dd>
+<dt class="bibtex label" id="hoshiya1972"><span class="brackets">7</span></dt>
+<dd><p>Masaru Hoshiya. Simulation of multi-correlated random processes and application to structural vibration problems. In <em>Proceedings of the Japan Society of Civil Engineers</em>, number 204, 121–128. Japan Society of Civil Engineers, 1972.</p>
+</dd>
+<dt class="bibtex label" id="huang2010"><span class="brackets">13</span></dt>
+<dd><p>SH Huang, QS Li, and JR Wu. A general inflow turbulence generator for large eddy simulation. <em>Journal of Wind Engineering and Industrial Aerodynamics</em>, 98(10-11):600–617, 2010.</p>
+</dd>
+<dt class="bibtex label" id="jarrin2006"><span class="brackets">9</span></dt>
+<dd><p>Nicolas Jarrin, Sofiane Benhamadouche, Dominique Laurence, and Robert Prosser. A synthetic-eddy-method for generating inflow conditions for large-eddy simulations. <em>International Journal of Heat and Fluid Flow</em>, 27(4):585–593, 2006.</p>
+</dd>
+<dt class="bibtex label" id="kaimal1972spectral"><span class="brackets">2</span></dt>
+<dd><p>J. C. Kaimal, J. C. Wyngaard, Y. Izumi, and O. R. Coté. Spectral characteristics of surface-layer turbulence. <em>Quarterly Journal of the Royal Meteorological Society</em>, 98(417):563–589, 1972. URL: <a class="reference external" href="https://rmets.onlinelibrary.wiley.com/doi/abs/10.1002/qj.49709841707">https://rmets.onlinelibrary.wiley.com/doi/abs/10.1002/qj.49709841707</a>, <a class="reference external" href="https://doi.org/10.1002/qj.49709841707">doi:10.1002/qj.49709841707</a>.</p>
+</dd>
+<dt class="bibtex label" id="kim2013"><span class="brackets">18</span></dt>
+<dd><p>Yusik Kim, Ian P Castro, and Zheng-Tong Xie. Divergence-free turbulence inflow conditions for large-eddy simulations with incompressible flow solvers. <em>Computers &amp; Fluids</em>, 84:56–68, 2013.</p>
+</dd>
+<dt class="bibtex label" id="klein2003"><span class="brackets">8</span></dt>
+<dd><p>M. Klein, A. Sadiki, and J. Janicka. A digital filter based generation of inflow data for spatially developing direct numerical or large eddy simulations. <em>Journal of Computational Physics</em>, 186(2):652–665, 2003.</p>
+</dd>
+<dt class="bibtex label" id="kraichnan1970"><span class="brackets">6</span></dt>
+<dd><p>Robert H Kraichnan. Diffusion by a random velocity field. <em>The physics of fluids</em>, 13(1):22–31, 1970.</p>
+</dd>
+<dt class="bibtex label" id="lund1998"><span class="brackets">17</span></dt>
+<dd><p>Thomas S Lund, Xiaohua Wu, and Kyle D Squires. Generation of turbulent inflow data for spatially-developing boundary layer simulations. <em>Journal of computational physics</em>, 140(2):233–258, 1998.</p>
+</dd>
+<dt class="bibtex label" id="parkdatabaseassisteddesignequivalent2018"><span class="brackets">PY18</span></dt>
+<dd><p>Sejun Park and DongHun Yeo. Database-assisted design and equivalent static wind loads for mid- and high-rise structures: concepts, software, and user’s manual. Technical Report NIST TN 2000, National Institute of Standards and Technology, Gaithersburg, MD, June 2018. <a class="reference external" href="https://doi.org/10.6028/NIST.TN.2000">doi:10.6028/NIST.TN.2000</a>.</p>
+</dd>
+<dt class="bibtex label" id="poletto2013"><span class="brackets">16</span></dt>
+<dd><p>R Poletto, T Craft, and A Revell. A new divergence free synthetic eddy method for the reproduction of inlet flow conditions for les. <em>Flow, turbulence and combustion</em>, 91(3):519–539, 2013.</p>
+</dd>
+<dt class="bibtex label" id="shinozuka1972"><span class="brackets">10</span></dt>
+<dd><p>Masanobu Shinozuka and C-M Jan. Digital simulation of random processes and its applications. <em>Journal of sound and vibration</em>, 25(1):111–128, 1972.</p>
+</dd>
+<dt class="bibtex label" id="simiu1996wind"><span class="brackets">3</span></dt>
+<dd><p>Emil Simiu and Robert H Scanlan. Wind effects on structures: fundamentals and application to design. <em>Book published by John Willey &amp; Sons Inc</em>, 1996.</p>
+</dd>
+<dt class="bibtex label" id="smirnov2001"><span class="brackets">11</span></dt>
+<dd><p>A Smirnov, S Shi, and I Celik. Random flow generation technique for large eddy simulations and particle-dynamics modeling. <em>Journal of fluids engineering</em>, 123(2):359–371, 2001.</p>
+</dd>
+<dt class="bibtex label" id="wittig1975simulation"><span class="brackets">1</span></dt>
+<dd><p>L. E. Wittig and A. K. Sinha. Simulation of multicorrelated random processes using the FFT algorithm. <em>The Journal of the Acoustical Society of America</em>, 58(3):630–634, 1975. URL: <a class="reference external" href="https://doi.org/10.1121/1.380702">https://doi.org/10.1121/1.380702</a>, <a class="reference external" href="https://doi.org/10.1121/1.380702">doi:10.1121/1.380702</a>.</p>
+</dd>
+<dt class="bibtex label" id="wu2017"><span class="brackets">5</span></dt>
+<dd><p>Xiaohua Wu. Inflow turbulence generation methods. <em>Annual Review of Fluid Mechanics</em>, 49:23–49, 2017.</p>
+</dd>
+<dt class="bibtex label" id="xie2008"><span class="brackets">19</span></dt>
+<dd><p>Zheng-Tong Xie and Ian P Castro. Efficient generation of inflow conditions for large eddy simulation of street-scale flows. <em>Flow, turbulence and combustion</em>, 81(3):449–470, 2008.</p>
+</dd>
+<dt class="bibtex label" id="yu2014"><span class="brackets">12</span></dt>
+<dd><p>Rixin Yu and Xue-Song Bai. A fully divergence-free method for generation of inhomogeneous and anisotropic turbulence with large spatial variation. <em>Journal of Computational Physics</em>, 256:234–253, 2014.</p>
+</dd>
+</dl>
+</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, The Regents of the University of California.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-158130480-2', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+    
+
+  <style>
+         .wy-nav-content { max-width: none; }
+  </style>
+
+<script>
+    /*
+    let selectedFilters = [];
+    const images  = document.getElementsByClassName("gallery-item");
+    const filters = [...document.querySelectorAll('.filter select')];
+    const toggles = [...document.querySelectorAll('.filter input')];
+
+    var show = function (elem) {
+        elem.style.display = 'block';
+    };
+    var hide = function (elem) {
+        elem.style.display = 'none';
+    };
+    var toggleFilter =  function(el,elid) {
+        const filter = document.getElementById(elid);
+        filter.disabled = !el.checked;
+       
+        if ("createEvent" in document) {
+            var evt = document.createEvent("HTMLEvents");
+            evt.initEvent("change", false, true);
+            filter.dispatchEvent(evt);
+        }
+        else
+            filter.fireEvent("change");
+    };
+    
+    for (const filter of filters) {
+        filter.addEventListener('change', function(event) {
+            selectedFilters = filters.map(filter => filter.disabled ? '' : filter.value).filter(Boolean);
+            console.log(selectedFilters);
+            for (const image of images) {
+                if (selectedFilters.every(filter => image.classList.contains(filter))) {
+                    show(image);
+                }
+                else {hide(image)};
+            };
+        })
+    };
+    */
+</script>
+
+
+</body>
+</html>

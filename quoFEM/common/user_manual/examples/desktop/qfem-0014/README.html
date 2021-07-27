@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>4.5. Steel Frame: Bayesian Calibration using TMCMC &mdash; Quantified Uncertainty with Optimization for the FEM  documentation</title>
+  <title>4.6. Steel Frame: Bayesian Calibration using TMCMC &mdash; Quantified Uncertainty with Optimization for the FEM  documentation</title>
   
 
   
@@ -44,8 +44,8 @@
     
     <link rel="index" title="Index" href="../../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../../search.html" />
-    <link rel="next" title="4.6. Surrogate Modeling for One Story Building Earthquake Response" href="../qfem-0015/README.html" />
-    <link rel="prev" title="4.4. Two-Dimensional Truss: Global Sensitivity Analysis using SimCenterUQ Engine" href="../qfem-0009/README.html" />
+    <link rel="next" title="4.7. Surrogate Modeling for One Story Building Earthquake Response" href="../qfem-0015/README.html" />
+    <link rel="prev" title="4.5. Two-Dimensional Truss: Global Sensitivity Analysis using SimCenterUQ Engine" href="../qfem-0009/README.html" />
 <script src="https://cdn.jsdelivr.net/npm/vega@5.12.1"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-lite@4.13.1"></script>
 <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.8.0"></script>
@@ -119,17 +119,18 @@
 <li class="toctree-l2"><a class="reference internal" href="../qfem-0001/README.html">4.1. Two-Dimensional Truss: Sampling, Reliability and Sensitivity</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../qfem-0002/README.html">4.2. Forward Propagation - OpenSeesPy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../qfem-0005/README.html">4.3. Basic modeling with Python</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../qfem-0009/README.html">4.4. Two-Dimensional Truss: Global Sensitivity Analysis using SimCenterUQ Engine</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">4.5. Steel Frame: Bayesian Calibration using TMCMC</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#outline">4.5.1. Outline</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#problem-description">4.5.2. Problem description</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#files-required">4.5.3. Files required</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#solving-the-problem-using-quofem">4.5.4. Solving the problem using quoFEM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qfem-0007/README.html">4.4. Steel Frame: Conventional Calibration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qfem-0009/README.html">4.5. Two-Dimensional Truss: Global Sensitivity Analysis using SimCenterUQ Engine</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4.6. Steel Frame: Bayesian Calibration using TMCMC</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#outline">4.6.1. Outline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#problem-description">4.6.2. Problem description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#files-required">4.6.3. Files required</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solving-the-problem-using-quofem">4.6.4. Solving the problem using quoFEM</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../qfem-0015/README.html">4.6. Surrogate Modeling for One Story Building Earthquake Response</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../qfem-0016/README.html">4.7. Surrogate Modeling to Predict Mean and Variance of Earthquake Response</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../qfem-0017/README.html">4.8. Custom UQ for UQpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qfem-0015/README.html">4.7. Surrogate Modeling for One Story Building Earthquake Response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qfem-0016/README.html">4.8. Surrogate Modeling to Predict Mean and Variance of Earthquake Response</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qfem-0017/README.html">4.9. Custom UQ for UQpy</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../bugs.html">5. Bugs &amp; Feature Requests</a></li>
@@ -195,7 +196,7 @@
         
           <li><a href="../examples.html"><span class="section-number">4. </span>Examples</a> &raquo;</li>
         
-      <li><span class="section-number">4.5. </span>Steel Frame: Bayesian Calibration using TMCMC</li>
+      <li><span class="section-number">4.6. </span>Steel Frame: Bayesian Calibration using TMCMC</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -215,7 +216,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="steel-frame-bayesian-calibration-using-tmcmc">
-<h1><span class="section-number">4.5. </span>Steel Frame: Bayesian Calibration using TMCMC<a class="headerlink" href="#steel-frame-bayesian-calibration-using-tmcmc" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">4.6. </span>Steel Frame: Bayesian Calibration using TMCMC<a class="headerlink" href="#steel-frame-bayesian-calibration-using-tmcmc" title="Permalink to this headline">¶</a></h1>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 41%" />
@@ -228,7 +229,7 @@
 </tbody>
 </table>
 <div class="section" id="outline">
-<h2><span class="section-number">4.5.1. </span>Outline<a class="headerlink" href="#outline" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.6.1. </span>Outline<a class="headerlink" href="#outline" title="Permalink to this headline">¶</a></h2>
 <p>In this example, Bayesian estimation is used to estimate the lateral story
 stiffnesses of the two stories of a simple steel frame, given data about
 its mode shapes and frequencies. The transitional Markov chain Monte Carlo
@@ -236,7 +237,7 @@ algorithm is used to obtain samples from the posterior probability distribution
 of the lateral story stiffnesses.</p>
 </div>
 <div class="section" id="problem-description">
-<h2><span class="section-number">4.5.2. </span>Problem description<a class="headerlink" href="#problem-description" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.6.2. </span>Problem description<a class="headerlink" href="#problem-description" title="Permalink to this headline">¶</a></h2>
 <p>Provided by Professor Joel Conte and his doctoral students Maitreya
 Kurumbhati and Mukesh Ramancha from UC San Diego, this example looks at
 the following simplified finite element model of a steel building.</p>
@@ -262,7 +263,7 @@ are generated by applying random perturbations to the analytic modal
 properties in order to simulate field data that might be obtained using
 a method for structural system identification:</p>
 <div class="math notranslate nohighlight" id="equation-common-user-manual-examples-desktop-qfem-0014-readme-0">
-<span class="eqno">(4.5.2.1)<a class="headerlink" href="#equation-common-user-manual-examples-desktop-qfem-0014-readme-0" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{array}{l}
+<span class="eqno">(4.6.2.1)<a class="headerlink" href="#equation-common-user-manual-examples-desktop-qfem-0014-readme-0" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{array}{l}
 \lambda_{1}^{(1)}=1025.21, \quad &amp;\lambda_{1}^{(2)}=1138.11, \quad &amp;\lambda_{1}^{(3)}=1099.39, \quad &amp;\lambda_{1}^{(4)}=1002.41, \quad &amp;\lambda_{1}^{(5)}=1052.69 \\
 \phi_{12}^{(1)}=1.53, \quad &amp;\phi_{12}^{(2)}=1.24, \quad &amp;\phi_{12}^{(3)}=1.38, \quad &amp;\phi_{12}^{(4)}=1.50, \quad &amp;\phi_{12}^{(5)}=1.35
 \end{array}\end{split}\]</div>
@@ -279,7 +280,7 @@ of <span class="math notranslate nohighlight">\(1150.33 \ \mathrm{kips/in}\)</sp
 <p>A Gaussian likelihood model is employed. This is done by assuming that the error between the finite element prediction of the modal properties and the simulated measurement data follows a bivariate Normal/Gaussian distribution with independent components. Here, the standard deviation of the error is assumed to be known, and equal to <span class="math notranslate nohighlight">\(5\%\)</span> of the true eigenvalue and eigenvector values. The components of the error vector are assumed to be statistically independent and identically distributed.</p>
 </div>
 <div class="section" id="files-required">
-<h2><span class="section-number">4.5.3. </span>Files required<a class="headerlink" href="#files-required" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.6.3. </span>Files required<a class="headerlink" href="#files-required" title="Permalink to this headline">¶</a></h2>
 <p>The exercise requires two script files. The user should download these file and place it in a <em>new</em> folder.</p>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://github.com/NHERI-SimCenter/quoFEM/tree/master/Examples//qfem-0014/src/model.tcl">model.tcl</a> - This is an OpenSees script written in tcl which builds the finite element model and conducts the analysis. This script creates a file called <code class="docutils literal notranslate"><span class="pre">results.out</span></code> when it runs. This file contains the first eigenvalue and the second component of the first eigenvector obtained from finite element analysis of the structure.</p></li>
@@ -289,7 +290,7 @@ of <span class="math notranslate nohighlight">\(1150.33 \ \mathrm{kips/in}\)</sp
 </ol>
 </div>
 <div class="section" id="solving-the-problem-using-quofem">
-<h2><span class="section-number">4.5.4. </span>Solving the problem using quoFEM<a class="headerlink" href="#solving-the-problem-using-quofem" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.6.4. </span>Solving the problem using quoFEM<a class="headerlink" href="#solving-the-problem-using-quofem" title="Permalink to this headline">¶</a></h2>
 <p>The steps involved are as follows:</p>
 <ol class="arabic simple">
 <li><p>Start the application and the <strong>UQ</strong> panel will be highlighted. In the <strong>UQ Engine</strong> drop down menu, select the <strong>UCSD_UQ</strong> engine. In the <strong>Method</strong> category drop down menu the <strong>Transitional Markov chain Monte Carlo</strong> option will be highlighted. In the <strong>Log Likelihood Script</strong> field, enter the path to the script which computes the log-likelihood (i.e., the file called <code class="docutils literal notranslate"><span class="pre">postProcessing.py</span></code> in this example), or select <strong>Choose</strong> and navigate to the file. Enter the number of samples desired to be drawn from the posterior distribution in the <strong># Samples</strong> field.</p></li>

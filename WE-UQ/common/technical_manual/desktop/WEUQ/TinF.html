@@ -1,0 +1,840 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>1.4. Turbulence Inflow &mdash; Wind Engineering with Uncertainty Quantification  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/css/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/css/lightbox.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../../" src="../../../../_static/documentation_options.js"></script>
+        <script src="../../../../_static/jquery.js"></script>
+        <script src="../../../../_static/underscore.js"></script>
+        <script src="../../../../_static/doctools.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/js/jquery-1.11.0.min.js"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2/js/lightbox.min.js"></script>
+        <script src="../../../../_static/sphinxcontrib-images/LightBox2/lightbox2-customize/jquery-noconflict.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="1.5. Ground Motion Intensity Spatial Correlation Model Options" href="../spatial_correlation.html" />
+    <link rel="prev" title="1.3. Scaling Wind Tunnel Data" href="scalingWindTunnelData.html" />
+<script src="https://cdn.jsdelivr.net/npm/vega@5.12.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-lite@4.13.1"></script>
+<script src="https://cdn.jsdelivr.net/npm/vega-embed@6.8.0"></script>
+<style media="screen">.vega-actions a {margin-right: 5px;}</style>
+<link href="../../../../_static/css/bootstrap.css" rel="stylesheet">
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #F2F2F2" >
+          
+<a href="https://simcenter.designsafe-ci.org/" style="margin-bottom: 0px;">
+  <img src="../../../../_static/img/SimCenter-Only.png" class="logo" alt="Org-Logo" />
+</a>
+<hr style="margin: 0px;">
+
+  <a href="../../../../index.html">
+
+
+
+  
+  <img src="../../../../_static/WE-UQ-Logo.png" class="logo" alt="Logo"/>
+
+</a>
+
+
+  
+  
+
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">About</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_manual/about/WEUQ/about.html">1. About</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../front-matter/ack.html">2. Acknowledgments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../front-matter/license.html">3. Copyright and License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../front-matter/glossary.html">4. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../front-matter/abbreviations.html">5. Abbreviations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">User Manual</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_manual/installation/desktop/installation.html">1. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_manual/usage/desktop/usage.html">2. User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_manual/troubleshooting/desktop/troubleshooting.html">3. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_manual/examples/desktop/examples.html">4. Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_manual/bugs.html">5. Bugs &amp; Feature Requests</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Technical Manual</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../technical_manual.html">1. Technical Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../uqTechnical.html">1.1. Dakota Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../damping.html">1.2. Damping Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scalingWindTunnelData.html">1.3. Scaling Wind Tunnel Data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1.4. Turbulence Inflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#synthetic-random-fourier-method">Synthetic Random Fourier Method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#synthetic-eddy-method">Synthetic Eddy Method</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mean-flow-and-reynolds-stresses">Mean flow and Reynolds stresses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#two-point-correlation">Two-point correlation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#two-time-correlation">Two-time correlation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#commonly-used-velocity-shape-functions">Commonly used velocity shape functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#digital-filtering-method">Digital filtering method</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../spatial_correlation.html">1.5. Ground Motion Intensity Spatial Correlation Model Options</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Manual</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer_manual/how_to_build/desktop/how_to_build.html">1. How to Build</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer_manual/architecture/desktop/architecture.html">2. Software Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer_manual/how_to_extend/desktop/how_to_extend.html">3. How to Extend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer_manual/verification/desktop/verification.html">4. Verification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../developer_manual/coding_style/desktop/coding_style.html">5. Coding Style</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Wind Engineering with Uncertainty Quantification</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../technical_manual.html"><span class="section-number">1. </span>Technical Manual</a> &raquo;</li>
+        
+      <li><span class="section-number">1.4. </span>Turbulence Inflow</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../../../_sources/common/technical_manual/desktop/WEUQ/TinF.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="turbulence-inflow">
+<span id="lblturbulanceinflowtheory"></span><h1><span class="section-number">1.4. </span>Turbulence Inflow<a class="headerlink" href="#turbulence-inflow" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>In computational wind engineering (CWE), generation of inflow turbulence satisfying prescribed
+mean-velocity profiles, turbulence spectra, spatial and temporal correlations is of great
+importance for the accurate evaluation of wind effects on buildings and structures. More
+specifically, the task is to generate a turbulent velocity field <span class="math notranslate nohighlight">\(\boldsymbol{u}(\boldsymbol{x},t)\)</span> with the form</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-0">
+<span class="eqno">(1.4.1)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-0" title="Permalink to this equation">¶</a></span>\[\boldsymbol{u}(\boldsymbol{x},t) = \boldsymbol{U}(\boldsymbol{x},t)+\boldsymbol{u}'(\boldsymbol{x},t)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\boldsymbol{U}(\boldsymbol{x},t)\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{u}'(\boldsymbol{x},t)\)</span> are
+the mean and fluctuating velocities at the position <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span>. The turbulent
+velocity field <span class="math notranslate nohighlight">\(\boldsymbol{u}\)</span> and its fluctuation <span class="math notranslate nohighlight">\(\boldsymbol{u}'\)</span> need to satisfy a number of properties which are list below:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{u}'\)</span> should be spatially and temporally correlated.</p>
+<blockquote>
+<div><p>item <span class="math notranslate nohighlight">\(\boldsymbol{u}'\)</span> needs to have prescribed Reynolds stresses tensor
+<span class="math notranslate nohighlight">\(R_{ij}(\boldsymbol{x}) = \overline{u_i'u_j'}(\boldsymbol{x})\)</span> where <span class="math notranslate nohighlight">\(u_i'\)</span>
+(<span class="math notranslate nohighlight">\(i=1,2,3\)</span>) is the <span class="math notranslate nohighlight">\(i\)</span>-th component of <span class="math notranslate nohighlight">\(\boldsymbol{u}'\)</span>  and the over line denotes the time average.</p>
+</div></blockquote>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{u}'\)</span> needs to have prescribed integral length scales <span class="math notranslate nohighlight">\(L_{ij}(\boldsymbol{x},\boldsymbol{e})\)</span></p>
+<blockquote>
+<div><div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-1">
+<span class="eqno">(1.4.2)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-1" title="Permalink to this equation">¶</a></span>\[L_{ij}(\boldsymbol{x},\boldsymbol{e}) = \int_{0}^{\infty} \rho_{ij}(\boldsymbol{x},r\boldsymbol{e})\ \mathrm{d}r,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\rho_{ij}(\boldsymbol{x},\boldsymbol{e})\)</span> is the correlation function given by</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-2">
+<span class="eqno">(1.4.3)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-2" title="Permalink to this equation">¶</a></span>\[\rho_{ij}(\boldsymbol{x},\boldsymbol{e}) = \frac{\overline{u_i'(\boldsymbol{x},t)u_j'(\boldsymbol{x}+\boldsymbol{e},t)}}{\overline{u_i'(\boldsymbol{x},t)u_j'(\boldsymbol{x},t)}}.\]</div>
+</div></blockquote>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{u}\)</span> should fulfil the divergence free constraint <span class="math notranslate nohighlight">\(\nabla \cdot \boldsymbol{u} = 0\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{u}'\)</span> should have prescribed correlation functions <span class="math notranslate nohighlight">\(\rho_{ij}(\boldsymbol{x},\boldsymbol{e})\)</span> or spectra.</p></li>
+</ul>
+<p>Several methodologies have been proposed for this purpose which can be classified into three
+general categories: precursor simulation methods, recycling methods and synthetic methods.
+Compared with precursor simulation and recycling methods, the synthetic methods in general offer
+a more practical and relatively efficient approach to generate inflow turbulence, and is
+therefore chosen as the subject of this section. Research activities on synthetic turbulence
+generation have been vigorous over the past decades and have branched out into several
+categories of techniques <a class="bibtex reference internal" href="../../../../index.html#wu2017" id="id1">[5]</a>, including the synthetic random Fourier method
+<a class="bibtex reference internal" href="../../../../index.html#kraichnan1970" id="id2">[6]</a><a class="bibtex reference internal" href="../../../../index.html#hoshiya1972" id="id3">[7]</a>, the synthetic digital filtering method <a class="bibtex reference internal" href="../../../../index.html#klein2003" id="id4">[8]</a>
+and the synthetic eddy methods <a class="bibtex reference internal" href="../../../../index.html#jarrin2006" id="id5">[9]</a>.
+A brief introduction regarding to these techniques is given below and emphasis is placed on their abilities to capture the statistical characteristics as well as the spatial and temporal coherence of turbulence. Also note that since real turbulence is very complex, in most cases, not all of the above listed features can be fulfilled. There is always some adaptation time required for the artificial turbulence to evolve into real turbulence. Fulfilling the properties above with the synthetic turbulence is important to minimize the adaptation time or length.</p>
+</div>
+<div class="section" id="synthetic-random-fourier-method">
+<h2>Synthetic Random Fourier Method<a class="headerlink" href="#synthetic-random-fourier-method" title="Permalink to this headline">¶</a></h2>
+<p>The so-called synthetic random Fourier method (SRFM) attempts to model turbulent flow field indirectly by imposing constraints on uncorrelated random fields through an energy spectrum to account for the spatial and temporal correlations, which can be further classified into two groups.
+The first group of the SRFM was based on the pioneering work in <a class="bibtex reference internal" href="../../../../index.html#hoshiya1972" id="id6">[7]</a> and <a class="bibtex reference internal" href="../../../../index.html#shinozuka1972" id="id7">[10]</a> on the simulation of multi-correlated random processes using a weighted amplitude wave superposition (WAWS) method. This approach has an advantage that both the targeted power- and cross-spectra can be imposed in the generation process so that the prescribed target characteristics can be maintained. A major drawback of this method is that the generated turbulence does not satisfy the continuity equation of the flow, or in other words, the divergence-free condition is not guaranteed. As a consequence it would take enormous effort for the solver to enforce the continuity by correcting the turbulence inflow inserted into the computational domain, and the statistical characteristics of the corrected flow field differs from the target values.</p>
+<p>The second group of the SRFM was initiated by the work in <a class="bibtex reference internal" href="../../../../index.html#kraichnan1970" id="id8">[6]</a> on
+divergence-free homogeneous isotropic turbulence synthesis through the superposition of random
+harmonic functions. <a class="bibtex reference internal" href="../../../../index.html#smirnov2001" id="id9">[11]</a> took a step forward by combing Kraichnan’s technique
+with scaling and orthogonal transformation operations in a procedure known as the random flow
+generation (RFG) which allows to generate inhomogeneous and anisotropic turbulence. However the
+scaling operation introduced in the RFG technique can result in a velocity field that is not
+divergence-free for inhomogeneous turbulence. Modifications to enforce the divergence-free
+constraint for inhomogeneous turbulence was discussed in <a class="bibtex reference internal" href="../../../../index.html#yu2014" id="id10">[12]</a>. A major drawback of RFG
+technique is that the power-spectra of the generated turbulence only follows Gaussian’s spectra
+model, so it is not suitable for simulating flows in atmospheric boundary layer.
+<a class="bibtex reference internal" href="../../../../index.html#huang2010" id="id11">[13]</a> revisited Kraichnan’s method and proposed a technique called DSRFG (for
+discretizing and synthesizing random flow generation) which allows to generate turbulent inflow
+from any prescribed spectrum. Instead of using the scaling and orthogonal transformation, the
+anisotropy of turbulence is realized by modifying the distribution strategy of the wave vector
+in Kraichnan’s original method. A drawback of the DSRFG technique is that it produces
+fluctuating velocities with high correlation due to the fact that in this method the spatial
+correlation is modelled by a parameter which is not a function of frequency but a constant
+value. Inspired by the DSRFG method, <a class="bibtex reference internal" href="../../../../index.html#castro2017" id="id12">[14]</a> proposed some modifications to this
+technique to obtain the velocity field that had a better match with the target turbulent
+statistics. This method, known as modified discretizing and synthesizing random flow generation
+(MDSRFG), is capable of removing the dependence of statistic quantities of synthetic turbulence
+on spectra discretization resolution. <a class="bibtex reference internal" href="../../../../index.html#aboshosha2015" id="id13">[15]</a> also proposed a technique called consistent discrete RFG (CDRFG) to accurately model the target spectra and the coherence function. In both two methods mentioned above, the parameter that characterizes the spatial correlation is expressed as a function of frequency to account for the damping of coherence with the increase of frequency. An attractive feature of second group of SRFM is that the generation procedures are usually independent at each point and each time-instant so that it can be easily accelerated by conducting parallel computation, although the generated random flow may not satisfy the continuity equation.</p>
+</div>
+<div class="section" id="synthetic-eddy-method">
+<h2>Synthetic Eddy Method<a class="headerlink" href="#synthetic-eddy-method" title="Permalink to this headline">¶</a></h2>
+<p>The synthetic eddy method (SEM) initiated by <a class="bibtex reference internal" href="../../../../index.html#jarrin2006" id="id14">[9]</a> is based on the classical view
+of turbulence as a superposition of the representative coherent eddies. In the SEM, the flow is
+assumed to consist of randomly distributed turbulent spots, and each turbulent spot is modelled
+by a three-dimensional shape function with compact support and satisfies a proper normalization
+condition. The spots are then assumed to be convected through an inlet plane with a reference
+velocity using Taylor’s frozen turbulence hypothesis. The resulting inflow turbulence is then
+reconstructed using the method proposed by to recover the desired statistical characteristics
+and to account for the conditions of inhomogeneity and anisotropy. The choice of the shape
+function plays an important role in the SEM since it is directly related to the two-point
+autocorrelation function, and consequently the power spectrum of the synthetic turbulence.
+Enforcement of the continuity condition in the SEM was discussed in <a class="bibtex reference internal" href="../../../../index.html#poletto2013" id="id15">[16]</a>.</p>
+<p>A brief introduction on the SEM presented by <a class="bibtex reference internal" href="../../../../index.html#jarrin2006" id="id16">[9]</a> is given as follows. To start
+with, the turbulent spot mentioned above can be represented as eddies defined by shape function
+<span class="math notranslate nohighlight">\(f\)</span> which has a compact support on <span class="math notranslate nohighlight">\([-1,1]\)</span> and has the normalization</p>
+<div class="math notranslate nohighlight" id="equation-normalization">
+<span class="eqno">(1.4.4)<a class="headerlink" href="#equation-normalization" title="Permalink to this equation">¶</a></span>\[\int_{-1}^1 f^2(x) \mathrm{d}x = 1\]</div>
+<p>The inflow plane on which we want to generate the synthetic turbulence with the SEM is basically
+a finite set of points <span class="math notranslate nohighlight">\(S =
+\{\boldsymbol{x}_1,\boldsymbol{x}_2,\ldots,\boldsymbol{x}_s\}\)</span>. The first step is to create a
+box of eddies <span class="math notranslate nohighlight">\(B\)</span> surrounding <span class="math notranslate nohighlight">\(S\)</span> which is going to contain the synthetic eddies. It is defined by</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-3">
+<span class="eqno">(1.4.5)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-3" title="Permalink to this equation">¶</a></span>\[B = \big\{(x_1,x_2,x_3)\in \mathbb{R}^3: x_{i,\text{min}}&lt;x_i&lt;x_{i,\text{max}}\big\}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-4">
+<span class="eqno">(1.4.6)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-4" title="Permalink to this equation">¶</a></span>\[x_{i,\text{min}} = \text{min}(x_i-\sigma_i(\boldsymbol{x})), \quad x_{i,\text{max}} = \text{max}(x_i+\sigma_i(\boldsymbol{x})), \quad \boldsymbol{x}\in S\]</div>
+<p>The volume of the box of eddies is noted by <span class="math notranslate nohighlight">\(V_B\)</span>. In the synthetic eddy method, the
+velocity signal generated by <span class="math notranslate nohighlight">\(N\)</span> eddies has the representation</p>
+<div class="math notranslate nohighlight" id="equation-semvelocity">
+<span class="eqno">(1.4.7)<a class="headerlink" href="#equation-semvelocity" title="Permalink to this equation">¶</a></span>\[u_i(\boldsymbol{x}) = U_i(\boldsymbol{x}) + \frac{1}{\sqrt{N}}\sum_{k=1}^N a_{ij} \epsilon_j^k f_{\boldsymbol{\sigma}(\boldsymbol{x})}(\boldsymbol{x}-\boldsymbol{x}^k)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> represent the coordinates of computational points and
+<span class="math notranslate nohighlight">\(\boldsymbol{x}^k\)</span> represent the coordinates of eddies. The coefficient <span class="math notranslate nohighlight">\(a_{ij}\)</span>
+results from the Cholesky decomposition of a prescribed Reynolds stress tensor <span class="math notranslate nohighlight">\(R_{ij}\)</span></p>
+<div class="math notranslate nohighlight" id="equation-lundcoefficients">
+<span class="eqno">(1.4.8)<a class="headerlink" href="#equation-lundcoefficients" title="Permalink to this equation">¶</a></span>\[\begin{split}\left(\begin{matrix}
+\sqrt{R_{11}} &amp; 0 &amp; 0 \\
+R_{21}/a_{11} &amp; \sqrt{R_{22}-a_{21}^2} &amp; 0 \\
+R_{31}/a_{11}  &amp; (R_{32}-a_{21}a_{31})/a_{22} &amp; \sqrt{R_{33}-a_{31}^2-a_{32}^2}
+\end{matrix}\right)\end{split}\]</div>
+<p>The coefficient <span class="math notranslate nohighlight">\(\epsilon_j^k\)</span> (<span class="math notranslate nohighlight">\(j=1,2,3\)</span>) is is the uniformly random intensity
+factor of values <span class="math notranslate nohighlight">\(+1\)</span> or <span class="math notranslate nohighlight">\(-1\)</span>, and <span class="math notranslate nohighlight">\(f_{\boldsymbol{\sigma}(\boldsymbol{x})}
+(\boldsymbol{x}-\boldsymbol{x}^k)\)</span> is the velocity distribution at <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> of the
+eddy located at <span class="math notranslate nohighlight">\(\boldsymbol{x}^k\)</span> defined as follows:</p>
+<div class="math notranslate nohighlight" id="equation-velocityshape">
+<span class="eqno">(1.4.9)<a class="headerlink" href="#equation-velocityshape" title="Permalink to this equation">¶</a></span>\[f_{\boldsymbol{\sigma}(\boldsymbol{x})} (\boldsymbol{x}-\boldsymbol{x}^k) = \sqrt{\frac{V_B}{\sigma_1\sigma_2\sigma_3}}f\left(\frac{x_1-x_1^k}{\sigma_1}\right)f\left(\frac{x_2-x_2^k}{\sigma_2}\right)f\left(\frac{x_3-x_3^k}{\sigma_3}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}=(\sigma_1,\sigma_2,\sigma_3)^T\)</span>. The position of the eddies
+<span class="math notranslate nohighlight">\(\boldsymbol{x}^k\)</span> before the first time step are independent from each other and taken
+from a uniform distribution over the box of eddies <span class="math notranslate nohighlight">\(B\)</span>. The eddies are convected through
+the box of eddies <span class="math notranslate nohighlight">\(B\)</span> with the mean velocity <span class="math notranslate nohighlight">\(\boldsymbol{U}(\boldsymbol{x})\)</span>. At
+each time step, the new position of eddy <span class="math notranslate nohighlight">\(k\)</span> is given by</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-5">
+<span class="eqno">(1.4.10)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-5" title="Permalink to this equation">¶</a></span>\[\boldsymbol{x}^k(t+\varDelta t) = \boldsymbol{x}^k(t)+\boldsymbol{U}(\boldsymbol{x}^k)\varDelta t\]</div>
+<p>where <span class="math notranslate nohighlight">\(\varDelta t\)</span> is the time step of the simulation. If an eddy <span class="math notranslate nohighlight">\(k\)</span> is convected
+out of the box <span class="math notranslate nohighlight">\(B\)</span>, then it is immediately regenerated randomly with in the region</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-6">
+<span class="eqno">(1.4.11)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-6" title="Permalink to this equation">¶</a></span>\[B_{\varDelta t} = \left\{ \boldsymbol{x}\notin B, \ \boldsymbol{x}+\boldsymbol{U}(\boldsymbol{x})\varDelta t \in B \right\}\]</div>
+<p>with a new random intensity vector <span class="math notranslate nohighlight">\(\epsilon_j^k\)</span>. <span class="math notranslate nohighlight">\(B_{\varDelta t}\)</span> denotes the
+region in which regenerated eddy <span class="math notranslate nohighlight">\(\boldsymbol{x}^k(t) \in B_{\varDelta t}\)</span> dose not effect the synthetic velocity at the inflow plane until the next time-step.</p>
+<div class="section" id="mean-flow-and-reynolds-stresses">
+<h3>Mean flow and Reynolds stresses<a class="headerlink" href="#mean-flow-and-reynolds-stresses" title="Permalink to this headline">¶</a></h3>
+<p>The mean value of the velocity signal <a class="reference internal" href="#equation-semvelocity">(1.4.7)</a> can be expressed as</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-7">
+<span class="eqno">(1.4.12)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-7" title="Permalink to this equation">¶</a></span>\[\left\langle u_i \right\rangle = U_i(\boldsymbol{x}) + \frac{1}{\sqrt{N}}\sum_{k=1}^N \left\langle a_{ij} \varepsilon_j^k f_{\boldsymbol{\sigma}(\boldsymbol{x})}(\boldsymbol{x}-\boldsymbol{x}^k) \right\rangle\]</div>
+<p>where the angles denote the mean operator. The independence between the random variables
+<span class="math notranslate nohighlight">\(\boldsymbol{x}^k\)</span> and <span class="math notranslate nohighlight">\(\varepsilon_j^k\)</span> in the mean operator implies that</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-8">
+<span class="eqno">(1.4.13)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-8" title="Permalink to this equation">¶</a></span>\[\left\langle a_{ij} \varepsilon_j^k f_{\boldsymbol{\sigma}(\boldsymbol{x})}(\boldsymbol{x}-\boldsymbol{x}^k) \right\rangle = a_{ij} \left\langle\varepsilon_j^k\right\rangle  \left\langle f_{\boldsymbol{\sigma}(\boldsymbol{x})}(\boldsymbol{x}-\boldsymbol{x}^k)  \right\rangle\]</div>
+<p>The term <span class="math notranslate nohighlight">\(\langle\varepsilon_j^k\rangle = 0\)</span> since the intensities of the eddies is either
+<span class="math notranslate nohighlight">\(1\)</span> or <span class="math notranslate nohighlight">\(-1\)</span> with equal probability. Consequently, we obtain</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-9">
+<span class="eqno">(1.4.14)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-9" title="Permalink to this equation">¶</a></span>\[\left\langle u_i \right\rangle = U_i(\boldsymbol{x}).\]</div>
+<p>The Reynolds stresses <span class="math notranslate nohighlight">\(\langle u_i u_j \rangle\)</span> of the synthesized write</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-10">
+<span class="eqno">(1.4.15)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-10" title="Permalink to this equation">¶</a></span>\[\langle u_i u_j \rangle = \frac{1}{N}\sum_{k=1}^N\sum_{k=1}^N a_{im}a_{jn} \langle \varepsilon_m^k \varepsilon_n^l \rangle \langle f_{\boldsymbol{\sigma}(\boldsymbol{x})}(\boldsymbol{x}-\boldsymbol{x}^k) f_{\boldsymbol{\sigma}(\boldsymbol{x})}(\boldsymbol{x}-\boldsymbol{x}^l) \rangle\]</div>
+<p>Using again the independence between the random variables <span class="math notranslate nohighlight">\(\boldsymbol{x}^k\)</span> and <span class="math notranslate nohighlight">\(\varepsilon_j^k\)</span>, the above equation reduces to</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-11">
+<span class="eqno">(1.4.16)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-11" title="Permalink to this equation">¶</a></span>\[\langle u_i u_j \rangle = \frac{1}{N}\sum_{k=1}^N a_{im}a_{jm} \langle f_{\boldsymbol{\sigma}(\boldsymbol{x})}^2(\boldsymbol{x}-\boldsymbol{x}^k)\]</div>
+<p>The term</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-12">
+<span class="eqno">(1.4.17)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-12" title="Permalink to this equation">¶</a></span>\[\langle f_{\boldsymbol{\sigma}(\boldsymbol{x})}^2(\boldsymbol{x}-\boldsymbol{x}^k) \rangle = \int_{\mathbb{R}^3} p(\boldsymbol{y}) f_{\boldsymbol{\sigma}(\boldsymbol{x})}^2(\boldsymbol{x}-\boldsymbol{x}^k) = 1\]</div>
+<p>follows from the fact that <span class="math notranslate nohighlight">\(\boldsymbol{x}^k\)</span> follows a uniform distribution over <span class="math notranslate nohighlight">\(B\)</span>, i.e.</p>
+<div class="math notranslate nohighlight" id="equation-distribution">
+<span class="eqno">(1.4.18)<a class="headerlink" href="#equation-distribution" title="Permalink to this equation">¶</a></span>\[\begin{split}p(\boldsymbol{y}) =
+\begin{cases}
+\frac{1}{V_B} &amp; \boldsymbol{y} \in B \\
+0 &amp; \boldsymbol{y} \notin B
+\end{cases}.\end{split}\]</div>
+<p>Finally, we arrive at</p>
+<div class="math notranslate nohighlight" id="equation-reynoldsstresses">
+<span class="eqno">(1.4.19)<a class="headerlink" href="#equation-reynoldsstresses" title="Permalink to this equation">¶</a></span>\[\langle u_i u_j \rangle = \frac{1}{N}\sum_{k=1}^N a_{im}a_{jm} = R_{ij}\]</div>
+<p>Hence the Reynolds stresses of the velocity fluctuations generated by the SEM reproduce exactly the input Reynolds stresses.</p>
+</div>
+<div class="section" id="two-point-correlation">
+<h3>Two-point correlation<a class="headerlink" href="#two-point-correlation" title="Permalink to this headline">¶</a></h3>
+<p>The two-point cross-correlation of the velocity fluctuations writes</p>
+<div class="math notranslate nohighlight" id="equation-twopointcorrelations0">
+<span class="eqno">(1.4.20)<a class="headerlink" href="#equation-twopointcorrelations0" title="Permalink to this equation">¶</a></span>\[R_{ij}(\boldsymbol{x},\boldsymbol{r}) = \langle u_i(\boldsymbol{x},t) u_j(\boldsymbol{x}+\boldsymbol{r},t) \rangle\]</div>
+<p>where <span class="math notranslate nohighlight">\(\boldsymbol{r} = (r_1,r_2,r_3)\)</span> is a vector defining the relative positions between the two points at which the velocity correlations are computed. By <a class="reference internal" href="#equation-semvelocity">(1.4.7)</a> and the linearity of the statistical mean, we obtain</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-13">
+<span class="eqno">(1.4.21)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-13" title="Permalink to this equation">¶</a></span>\[R_{ij}(\boldsymbol{x},\boldsymbol{r}) = \frac{1}{N}\sum_{k=1}^N\sum_{k=1}^N a_{im}a_{jn} \langle \varepsilon_m^k \varepsilon_n^l \rangle \langle f_{\boldsymbol{\sigma}(\boldsymbol{x})}(\boldsymbol{x}-\boldsymbol{x}^k) f_{\boldsymbol{\sigma}(\boldsymbol{x}+\boldsymbol{r})}(\boldsymbol{x}+\boldsymbol{r}-\boldsymbol{x}^l) \rangle\]</div>
+<p>Using again the independence between the positions <span class="math notranslate nohighlight">\(\boldsymbol{x}^k\)</span> and the intensities
+<span class="math notranslate nohighlight">\(\varepsilon^k\)</span> of the eddies, this yields</p>
+<div class="math notranslate nohighlight" id="equation-twopointcorrelations1">
+<span class="eqno">(1.4.22)<a class="headerlink" href="#equation-twopointcorrelations1" title="Permalink to this equation">¶</a></span>\[R_{ij}(\boldsymbol{x},\boldsymbol{r}) = \frac{1}{N}\sum_{k=1}^N a_{im}a_{jm} \langle f_{\boldsymbol{\sigma}(\boldsymbol{x})}(\boldsymbol{x}-\boldsymbol{x}^k) f_{\boldsymbol{\sigma}(\boldsymbol{x}+\boldsymbol{r})}(\boldsymbol{x}+\boldsymbol{r}-\boldsymbol{x}^k) \rangle\]</div>
+<p>By <a class="reference internal" href="#equation-distribution">(1.4.18)</a>, the term in the mean operator writes</p>
+<div class="math notranslate nohighlight" id="equation-twopointcorrelations2">
+<span class="eqno">(1.4.23)<a class="headerlink" href="#equation-twopointcorrelations2" title="Permalink to this equation">¶</a></span>\[\langle f_{\boldsymbol{\sigma}(\boldsymbol{x})}(\boldsymbol{x}-\boldsymbol{x}^k) f_{\boldsymbol{\sigma}(\boldsymbol{x}+\boldsymbol{r})}(\boldsymbol{x}+\boldsymbol{r}-\boldsymbol{x}^k) \rangle = \frac{1}{V_B} \int_B f_{\boldsymbol{\sigma}(\boldsymbol{x})}(\boldsymbol{x}-\boldsymbol{y}) f_{\boldsymbol{\sigma}(\boldsymbol{x}+\boldsymbol{r})}(\boldsymbol{x}+\boldsymbol{r}-\boldsymbol{y}) \mathrm{d}\boldsymbol{y}\]</div>
+<p>Inserting <a class="reference internal" href="#equation-twopointcorrelations2">(1.4.23)</a> back to <a class="reference internal" href="#equation-twopointcorrelations1">(1.4.22)</a> and using
+<a class="reference internal" href="#equation-velocityshape">(1.4.9)</a>, this yields</p>
+<div class="math notranslate nohighlight" id="equation-twopointcorrelations3">
+<span class="eqno">(1.4.24)<a class="headerlink" href="#equation-twopointcorrelations3" title="Permalink to this equation">¶</a></span>\[R_{ij}(\boldsymbol{x},\boldsymbol{r}) = R_{ij} \cdot \prod_{l=1}^3 \left[f_{\boldsymbol{\sigma}(\boldsymbol{x})} *f_{\boldsymbol{\sigma}(\boldsymbol{x}+\boldsymbol{r})} \right](r_l)\]</div>
+<p>where <span class="math notranslate nohighlight">\(∗\)</span> denotes the convolution product. For homogeneous turbulence where integral
+length scales <span class="math notranslate nohighlight">\(\boldsymbol{\sigma}(\boldsymbol{x}) =
+\boldsymbol{\sigma}(\boldsymbol{x}+\boldsymbol{r}) =(\sigma,\sigma,\sigma)^T\)</span>, the two-point
+cross-correlation tensor <span class="math notranslate nohighlight">\(R_{ij}(\boldsymbol{x},\boldsymbol{r})\)</span> only depends on
+<span class="math notranslate nohighlight">\(\boldsymbol{r}\)</span> and consequently <a class="reference internal" href="#equation-twopointcorrelations3">(1.4.24)</a> simplifies to</p>
+<div class="math notranslate nohighlight" id="equation-twopointcorrelations4">
+<span class="eqno">(1.4.25)<a class="headerlink" href="#equation-twopointcorrelations4" title="Permalink to this equation">¶</a></span>\[R_{ij}(\boldsymbol{r}) = R_{ij} \cdot \prod_{l=1}^3 \left[f*f\right]\left(\frac{r_l}{\sigma}\right)\]</div>
+<p>Recall the integral length scale <span class="math notranslate nohighlight">\(L_{ij}\)</span> is defined as the integral of the two-point
+correlation <span class="math notranslate nohighlight">\(R_{ij}(\boldsymbol{x},\boldsymbol{r})\)</span> in a particular direction and is thus
+proportional to <span class="math notranslate nohighlight">\(\sigma\)</span>. By integrating <a class="reference internal" href="#equation-twopointcorrelations4">(1.4.25)</a>, one easily
+verifies that (for homogeneous turbulence) <span class="math notranslate nohighlight">\(L_{ij}=C_f\sigma\)</span> in every direction where
+<span class="math notranslate nohighlight">\(C_f\)</span> only depends on the choice of <span class="math notranslate nohighlight">\(f\)</span>.</p>
+<p>Fourier analysis can also be used to obtain the spectra of the synthetic turbulence. Note that
+the velocity spectrum tensor <span class="math notranslate nohighlight">\(\phi_{ij}(k)\)</span> is the Fourier transform of the two-point correlation tensor</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-14">
+<span class="eqno">(1.4.26)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-14" title="Permalink to this equation">¶</a></span>\[\phi_{ij}(\boldsymbol{k}) = \mathcal{F}_{\boldsymbol{k}}\left\{R_{ij}(\boldsymbol{r})\right\}\]</div>
+<p>Recall the convolution theorem for cross-correlation states that</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-15">
+<span class="eqno">(1.4.27)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-15" title="Permalink to this equation">¶</a></span>\[\mathcal{F}_{\boldsymbol{k}}\left\{f * f\right\} = |\mathcal{F}_{\boldsymbol{k}}\left\{f\right\}|^2\]</div>
+<p>Hence the spatial velocity spectrum tensor can be expressed as</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-16">
+<span class="eqno">(1.4.28)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-16" title="Permalink to this equation">¶</a></span>\[\phi_{ij}(\boldsymbol{k}) = R_{ij}\sigma^3 \cdot \prod_{l=1}^3|\mathcal{F}_{k_l\sigma}\left\{f\right\}|^2\]</div>
+<p>where <span class="math notranslate nohighlight">\(\boldsymbol{k} = (k_1,k_2,k_3)\)</span>. More specifically for instance, the
+one-dimensional spectra in the <span class="math notranslate nohighlight">\(x\)</span> direction is</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-17">
+<span class="eqno">(1.4.29)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-17" title="Permalink to this equation">¶</a></span>\[E_{ij}(k) = R_{ij}\sigma^3 \cdot |\mathcal{F}_{k_l\sigma}\left\{f\right\}|^2\]</div>
+</div>
+<div class="section" id="two-time-correlation">
+<h3>Two-time correlation<a class="headerlink" href="#two-time-correlation" title="Permalink to this headline">¶</a></h3>
+<p>The two-time correlation tensor of the velocity, denoted by <span class="math notranslate nohighlight">\(R_{ij}(\boldsymbol{x},\tau)\)</span>,
+is the correlation between <span class="math notranslate nohighlight">\(u_i(\boldsymbol{x},t)\)</span> and <span class="math notranslate nohighlight">\(u_j(\boldsymbol{x},t+\tau)\)</span>
+at times <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(t + \tau\)</span> respectively, i.e.,</p>
+<div class="math notranslate nohighlight" id="equation-twotimecorrelation0">
+<span class="eqno">(1.4.30)<a class="headerlink" href="#equation-twotimecorrelation0" title="Permalink to this equation">¶</a></span>\[R_{ij}(\boldsymbol{x},\tau) = \langle u_i(\boldsymbol{x},t) u_j(\boldsymbol{x},t+\tau) \rangle.\]</div>
+<p>By <a class="reference internal" href="#equation-semvelocity">(1.4.7)</a> and the linearity of the statistical mean, we have</p>
+<div class="math notranslate nohighlight" id="equation-twotimecorrelation1">
+<span class="eqno">(1.4.31)<a class="headerlink" href="#equation-twotimecorrelation1" title="Permalink to this equation">¶</a></span>\[R_{ij}(\boldsymbol{x},\tau) = \frac{1}{N}\sum_{k=1}^N\sum_{k=1}^N a_{im}a_{jn} \langle \varepsilon_m^k(t) \varepsilon_n^l(t+\tau) f_{\boldsymbol{\sigma}(\boldsymbol{x})}(\boldsymbol{x}-\boldsymbol{x}^k(t)) f_{\boldsymbol{\sigma}(\boldsymbol{x})}(\boldsymbol{x}-\boldsymbol{x}^l(t+\tau)) \rangle\]</div>
+<p>The independence between the position <span class="math notranslate nohighlight">\(\boldsymbol{x}^k\)</span> and intensity
+<span class="math notranslate nohighlight">\(\varepsilon_m^k\)</span> of different eddies implies that, for <span class="math notranslate nohighlight">\(k \neq l\)</span>, the statistical
+mean in <a class="reference internal" href="#equation-twotimecorrelation1">(1.4.31)</a> can be split as follows</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-18">
+<span class="eqno">(1.4.32)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-18" title="Permalink to this equation">¶</a></span>\[\langle \varepsilon_m^k(t) \rangle \langle \varepsilon_n^l(t+\tau) \rangle \langle f_{\boldsymbol{\sigma}(\boldsymbol{x})}(\boldsymbol{x}-\boldsymbol{x}^k(t)) \rangle \langle f_{\boldsymbol{\sigma}(\boldsymbol{x})}(\boldsymbol{x}-\boldsymbol{x}^l(t+\tau)) \rangle = 0\]</div>
+<p>Consequently <a class="reference internal" href="#equation-twotimecorrelation1">(1.4.31)</a> reduces to</p>
+<div class="math notranslate nohighlight" id="equation-twotimecorrelation2">
+<span class="eqno">(1.4.33)<a class="headerlink" href="#equation-twotimecorrelation2" title="Permalink to this equation">¶</a></span>\[R_{ij}(\boldsymbol{x},\tau) = \frac{1}{N}\sum_{k=1}^N a_{im}a_{jn} \langle \varepsilon_m^k(t) \varepsilon_n^k(t+\tau) f_{\boldsymbol{\sigma}(\boldsymbol{x})}(\boldsymbol{x}-\boldsymbol{x}^k(t)) f_{\boldsymbol{\sigma}(\boldsymbol{x})}(\boldsymbol{x}-\boldsymbol{x}^k(t+\tau)) \rangle\]</div>
+<p>Before computing the term in the angles, we define <span class="math notranslate nohighlight">\(B_{\tau} \in B\)</span>  such that all eddies
+that present in <span class="math notranslate nohighlight">\(B_{\tau}\)</span> at time <span class="math notranslate nohighlight">\(t\)</span> will be convected far enough so that they
+will be recycled at least once before time <span class="math notranslate nohighlight">\(t+\tau\)</span></p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-19">
+<span class="eqno">(1.4.34)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-19" title="Permalink to this equation">¶</a></span>\[B_{\tau} = \left\{\boldsymbol{x}\in B, \ \boldsymbol{x}+\tau \boldsymbol{U}(\boldsymbol{x}) \in B \right\}\]</div>
+<p>If <span class="math notranslate nohighlight">\(\boldsymbol{x}^k(t)\in B_{\tau}\)</span>, then it is going to be recycled between time
+<span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(t+\tau\)</span> and hence both <span class="math notranslate nohighlight">\(\boldsymbol{x}^k(t+\tau)\)</span> and
+<span class="math notranslate nohighlight">\(\varepsilon_m^k(t+\tau)\)</span> will be independent of their previous values. The contribution
+of an eddy <span class="math notranslate nohighlight">\(k\)</span> located within the region where <span class="math notranslate nohighlight">\(\boldsymbol{x}^k(t) \in B_{\tau}\)</span> to
+the term in the angles of <a class="reference internal" href="#equation-twotimecorrelation2">(1.4.33)</a> is thus zero. On the contrary if
+<span class="math notranslate nohighlight">\(\boldsymbol{x}^k(t) \in B_{\tau}\)</span>, the eddy <span class="math notranslate nohighlight">\(k\)</span> will remain inside of the box
+<span class="math notranslate nohighlight">\(B\)</span> at time <span class="math notranslate nohighlight">\(t + \tau\)</span> and hence <span class="math notranslate nohighlight">\(\varepsilon_m^k(t+\tau) =
+\varepsilon_m^k(t)\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{x}^k(t+\tau)
+=\boldsymbol{x}^k(t)+\tau\boldsymbol{U}(\boldsymbol{x}^k)\)</span>. Thus both
+<span class="math notranslate nohighlight">\(\varepsilon_n^k(t+\tau) =  \varepsilon_n^k(t)\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{x}^k(t+\tau)\)</span>
+depend on the previous position <span class="math notranslate nohighlight">\(\boldsymbol{x}^k(t)\)</span> of eddy <span class="math notranslate nohighlight">\(k\)</span> relative to
+<span class="math notranslate nohighlight">\(B_{\tau}\)</span>. By <a class="reference internal" href="#equation-reynoldsstresses">(1.4.19)</a> and the definition of <span class="math notranslate nohighlight">\(B_{\tau}\)</span>,
+<a class="reference internal" href="#equation-twopointcorrelations0">(1.4.20)</a> can then be replaced by</p>
+<div class="math notranslate nohighlight" id="equation-twotimecorrelation3">
+<span class="eqno">(1.4.35)<a class="headerlink" href="#equation-twotimecorrelation3" title="Permalink to this equation">¶</a></span>\[R_{ij}(\boldsymbol{x},\tau) = R_{ij} \int_{B/B_{\tau}}f_{\boldsymbol{\sigma}(\boldsymbol{x})}(\boldsymbol{x}-\boldsymbol{y}) f_{\boldsymbol{\sigma}(\boldsymbol{x})}(\boldsymbol{x}-(\boldsymbol{y}+\tau\boldsymbol{U}_c)) \ \mathrm{d}\boldsymbol{y}\]</div>
+<p>Since <span class="math notranslate nohighlight">\(\boldsymbol{y}\in B_{\tau}\)</span> leads to
+<span class="math notranslate nohighlight">\(f_{\boldsymbol{\sigma}(\boldsymbol{x})}(\boldsymbol{x}-(\boldsymbol{y}+\tau\boldsymbol{U}))=0\)</span>,
+the integral over <span class="math notranslate nohighlight">\(B/B_{\tau}\)</span> in the above expression can be extended to an integral over
+<span class="math notranslate nohighlight">\(B\)</span>. Besides <span class="math notranslate nohighlight">\(\boldsymbol{y}\in B\)</span> suggests
+<span class="math notranslate nohighlight">\(f_{\boldsymbol{\sigma}(\boldsymbol{x})}(\boldsymbol{x}-\boldsymbol{y})=0\)</span> as previously
+demonstrated, therefore the integral in <a class="reference internal" href="#equation-twotimecorrelation3">(1.4.35)</a> can be further extended to
+an integral over <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>. Using <a class="reference internal" href="#equation-velocityshape">(1.4.9)</a>, we finally arrive at</p>
+<div class="math notranslate nohighlight" id="equation-twotimecorrelation4">
+<span class="eqno">(1.4.36)<a class="headerlink" href="#equation-twotimecorrelation4" title="Permalink to this equation">¶</a></span>\[R_{ij}(\boldsymbol{x},\tau) = R_{ij} \cdot \prod_{l=1}^3[f*f]\left(\frac{\tau U_{l}(\boldsymbol{x})}{\sigma_l(\boldsymbol{x})}\right)\]</div>
+<p>In the case where the mean velocity is in the x-direction only <span class="math notranslate nohighlight">\(\boldsymbol{U} = (U,0,0)\)</span>
+and the target turbulence is homogeneous, <a class="reference internal" href="#equation-twotimecorrelation4">(1.4.36)</a> simplifies to</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-20">
+<span class="eqno">(1.4.37)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-20" title="Permalink to this equation">¶</a></span>\[R_{ij}(\boldsymbol{x},\tau) = R_{ij} [f*f]\left(\frac{\tau U(\boldsymbol{x})}{\sigma(\boldsymbol{x})}\right)\]</div>
+<p>Thus the two-time correlation of the signal at time <span class="math notranslate nohighlight">\(\tau\)</span> is simply the autocorrelation
+function of <span class="math notranslate nohighlight">\(f\)</span> at separation distance <span class="math notranslate nohighlight">\(\tau U /\sigma\)</span>. By integrating the above
+equation it can be proved that the integral time scale of the signal writes <span class="math notranslate nohighlight">\(T = \sigma/U
+C_f\)</span> where <span class="math notranslate nohighlight">\(C_f\)</span> is a coefficient only depends on the choice of <span class="math notranslate nohighlight">\(f\)</span>. Since the
+synthetic velocity is a stationary process, the information the two-time cross-correlation
+tensor <span class="math notranslate nohighlight">\(R_{ij}(\boldsymbol{x},\tau)\)</span> contains can be re-expressed in terms of the wave number velocity spectrum tensor which writes</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-21">
+<span class="eqno">(1.4.38)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-21" title="Permalink to this equation">¶</a></span>\[\phi_{ij}(\boldsymbol{x},\omega) = \mathcal{F}_{\omega}\{R_{ij}(\boldsymbol{x},\tau)\}\]</div>
+<p>Using again the convolution theorem as expressed, the above expression simplifies to</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-22">
+<span class="eqno">(1.4.39)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-22" title="Permalink to this equation">¶</a></span>\[\phi_{ij}(\boldsymbol{x},\omega) = R_{ij}\frac{\sigma}{|U|} |\mathcal{F}_{\omega\sigma / |U|}\{f\}|^2\]</div>
+</div>
+<div class="section" id="commonly-used-velocity-shape-functions">
+<h3>Commonly used velocity shape functions<a class="headerlink" href="#commonly-used-velocity-shape-functions" title="Permalink to this headline">¶</a></h3>
+<p>We list three commonly used velocity shape functions <span class="math notranslate nohighlight">\(f\)</span> below for reference. There are the tent function, the step function and the truncated Gaussian function.</p>
+<ul>
+<li><p>Tent function</p>
+<blockquote>
+<div><div class="math notranslate nohighlight" id="equation-ftent">
+<span class="eqno">(1.4.40)<a class="headerlink" href="#equation-ftent" title="Permalink to this equation">¶</a></span>\[\begin{split}f(x) =
+\begin{cases}
+\sqrt{\frac{3}{2}}(1-|x|), &amp; 0 \leq |x| &lt; 1 \\
+0, &amp; |x| \geq 1
+\end{cases}\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-23">
+<span class="eqno">(1.4.41)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-23" title="Permalink to this equation">¶</a></span>\[\begin{split}[f*f](r) =
+\begin{cases}
+1-\frac{3}{2}r^2+\frac{3}{4}|r|^3, &amp; 0 \leq |r| &lt; 1 \\
+2-3|r|+\frac{3}{2}r^2-\frac{1}{4}|r|^3, &amp; 1 \leq |r| &lt;2 \\
+0, &amp; |r|\geq 2
+\end{cases}\end{split}\]</div>
+</div></blockquote>
+</li>
+<li><p>Step function</p>
+<blockquote>
+<div><div class="math notranslate nohighlight" id="equation-fstep">
+<span class="eqno">(1.4.42)<a class="headerlink" href="#equation-fstep" title="Permalink to this equation">¶</a></span>\[\begin{split}f(x) =
+\begin{cases}
+\frac{1}{\sqrt{2}}, &amp; 0 \leq |x| &lt; 1 \\
+0, &amp; |x| \geq 1
+\end{cases}\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-24">
+<span class="eqno">(1.4.43)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-24" title="Permalink to this equation">¶</a></span>\[\begin{split}[f*f](r) =
+\begin{cases}
+1-\frac{|r|}{2}, &amp; 0 \leq |r| &lt; 2 \\
+0, &amp; |r|\geq 2
+\end{cases}\end{split}\]</div>
+</div></blockquote>
+</li>
+<li><p>Truncated Gaussian function</p>
+<blockquote>
+<div><div class="math notranslate nohighlight" id="equation-fgaussian">
+<span class="eqno">(1.4.44)<a class="headerlink" href="#equation-fgaussian" title="Permalink to this equation">¶</a></span>\[\begin{split}f(x) =
+\begin{cases}
+Ce^{-9x^2/2}, &amp; 0 \leq |x| &lt; 1 \\
+0, &amp; |x| \geq 1
+\end{cases}\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-25">
+<span class="eqno">(1.4.45)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-25" title="Permalink to this equation">¶</a></span>\[\begin{split}[f*f](r) =
+\begin{cases}
+e^{-9r^2/2} &amp; \leq |r| &lt; 2 \\
+0, &amp; |r|\geq 2
+\end{cases}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(C\)</span> is a constant that ensures <span class="math notranslate nohighlight">\(f\)</span> satisfies the normalization
+<a class="reference internal" href="#equation-normalization">(1.4.4)</a>.</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="digital-filtering-method">
+<h2>Digital filtering method<a class="headerlink" href="#digital-filtering-method" title="Permalink to this headline">¶</a></h2>
+<p>The synthetic digital filtering method (SDFM) initiated by <a class="bibtex reference internal" href="../../../../index.html#klein2003" id="id17">[8]</a> attempts to model
+the spatial and temporal coherence of turbulent inflow through the digital filtering
+uncorrelated random data, and account for inhomogeneity and anisotropy using the method proposed
+by <a class="bibtex reference internal" href="../../../../index.html#lund1998" id="id18">[17]</a>. It is relatively easy to implement and is able to reproduce the first and
+second order one-point statistics as well as autocorrelation function. However, the synthetic
+turbulence generated by SDFM does not satisfy the continuity equation. <a class="bibtex reference internal" href="../../../../index.html#kim2013" id="id19">[18]</a> offered a promising approach to enforce the divergence-free constraint in the SDFM by inserting the synthetic turbulence on a transverse plane near the inlet and relying on pressure-velocity coupling to do the correction. From a computational wind engineering point of view, the ability of SDFM to impose a two-point spatial correlation directly is very attractive.</p>
+<p>We now briefly introduce the filtering method by <a class="bibtex reference internal" href="../../../../index.html#klein2003" id="id20">[8]</a>. In order to create two-point
+correlations, let <span class="math notranslate nohighlight">\(r_m\)</span> be a series of random data with zero mean and unity variance, then</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-26">
+<span class="eqno">(1.4.46)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-26" title="Permalink to this equation">¶</a></span>\[u_m = \sum_{n=-N}^N b_n r_{m+n}\]</div>
+<p>defines a convolution or a digital linear non-recursive filter. The <span class="math notranslate nohighlight">\(b_n\)</span> are filter
+coefficients and <span class="math notranslate nohighlight">\(N\)</span> is related to the length of the filter. The independence between two
+different random numbers <span class="math notranslate nohighlight">\(r_m\)</span> and <span class="math notranslate nohighlight">\(r_n\)</span> implies that <span class="math notranslate nohighlight">\(\langle r_m r_n \rangle
+= 0\)</span> for <span class="math notranslate nohighlight">\(m \neq n\)</span> and consequently the two-point correlation between <span class="math notranslate nohighlight">\(u_{m}\)</span> and
+<span class="math notranslate nohighlight">\(u_{m+k}\)</span> writes</p>
+<div class="math notranslate nohighlight" id="equation-sdf1">
+<span class="eqno">(1.4.47)<a class="headerlink" href="#equation-sdf1" title="Permalink to this equation">¶</a></span>\[R_{uu}(k\varDelta x) = \frac{\langle u_{m} u_{m+k} \rangle}{\langle u_{m} u_{m} \rangle} = \sum_{j=-N+k}^N b_j b_{j-k} / \sum_{-j=-N}^N b_j^2\]</div>
+<p>where <span class="math notranslate nohighlight">\(\varDelta x\)</span> is the grid spacing. Note that <span class="math notranslate nohighlight">\(u_{m}\)</span> and <span class="math notranslate nohighlight">\(u_{m+k}\)</span> can
+be interpolated as the values of a random variable field (e.g., velocity) at two distinct grid
+points with a distance <span class="math notranslate nohighlight">\(k\varDelta x\)</span> defined on a one dimensional axis. It is
+straightforward to tell <a class="reference internal" href="#equation-sdf1">(1.4.47)</a> defines a relation between the filter coefficients and the
+correlation function of <span class="math notranslate nohighlight">\(u_m\)</span> (denoted by <span class="math notranslate nohighlight">\(R_{uu}\)</span> hereafter). This suggests that a
+prescribed correlation function can be reproduced through a careful determination of the filter
+coefficients. Also note that the coefficients should be determined such that the resulting
+correlation function fulfil some basic properties like <span class="math notranslate nohighlight">\(R_{uu}(0)=1\)</span>, <span class="math notranslate nohighlight">\(R_{uu}(\infty) = 0\)</span> and the prescribed integral length scales.</p>
+<p>For a general target correlation function, the filter coefficients <span class="math notranslate nohighlight">\(b_n\)</span> can be computed
+by solving a system of non-linear equations in the form of <a class="reference internal" href="#equation-sdf1">(1.4.47)</a> with a multidimensional Newton method. The procedure can be taken from a standard textbook and needs no further comment. However, for a Gaussian or an exponential type of correlation function, there exists a simple but approximate prescribed solution. More specifically, for a Gaussian correlation function in the form of</p>
+<div class="math notranslate nohighlight" id="equation-gaussian">
+<span class="eqno">(1.4.48)<a class="headerlink" href="#equation-gaussian" title="Permalink to this equation">¶</a></span>\[R(r) = \mathrm{exp}\left(-\frac{\pi r^2}{4L^2}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(r\)</span> is the distance and <span class="math notranslate nohighlight">\(L\)</span> is the length scale. It is possible to
+approximately reproduce <a class="reference internal" href="#equation-gaussian">(1.4.48)</a> by computing the filter coefficients as</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-27">
+<span class="eqno">(1.4.49)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-27" title="Permalink to this equation">¶</a></span>\[b_k = \tilde{b}_k / \left( \sum_{j=-N}^N \tilde{b}_j^2 \right)^{1/2}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-28">
+<span class="eqno">(1.4.50)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-28" title="Permalink to this equation">¶</a></span>\[\tilde{b}_k = e^{-\frac{\pi k^2}{4n^2}}\]</div>
+<p>The width <span class="math notranslate nohighlight">\(N\)</span> of the filter should be chosen such that <span class="math notranslate nohighlight">\(N\geq 2n\)</span> (where <span class="math notranslate nohighlight">\(n=L\varDelta x\)</span>) to ensure the accuracy of the approximation. On the other hand, for an exponential correlation function</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-29">
+<span class="eqno">(1.4.51)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-29" title="Permalink to this equation">¶</a></span>\[R(r) = \mathrm{exp}\left(-\frac{\pi |r|}{2L}\right)\]</div>
+<p>It is suggested <a class="bibtex reference internal" href="../../../../index.html#xie2008" id="id21">[19]</a> to evaluate the filter coefficients using</p>
+<div class="math notranslate nohighlight" id="equation-exponential">
+<span class="eqno">(1.4.52)<a class="headerlink" href="#equation-exponential" title="Permalink to this equation">¶</a></span>\[b_k = \tilde{b}_k / \left( \sum_{j=-N}^N \tilde{b}_j^2 \right)^{1/2}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-30">
+<span class="eqno">(1.4.53)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-30" title="Permalink to this equation">¶</a></span>\[\tilde{b}_k = e^{-\frac{\pi|k|}{n}}\]</div>
+<p>Again, the width <span class="math notranslate nohighlight">\(N\)</span> of the filter should be chosen such that <span class="math notranslate nohighlight">\(N\geq 2n\)</span> (where
+<span class="math notranslate nohighlight">\(n=L\varDelta x\)</span>) to ensure the accuracy of the approximation. Now we have finished the
+discussion of the digital filtering method for one-dimensional case. Such a technique of
+generating spatially (or temporally) correlated data from general random numbers can be easily
+extended to three dimensional case by introducing multi-index filter coefficients <span class="math notranslate nohighlight">\(b_{ijk}\)</span> defined as</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-31">
+<span class="eqno">(1.4.54)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-31" title="Permalink to this equation">¶</a></span>\[b(i,j,k) = b_{ijk} = b_i \cdot b_j \cdot b_k\]</div>
+<p>An algorithm for generating inflow data may look like this (alternatively one can generate a large volume of data, store it and convect it through the inflow plane by applying Taylor’s hypothesis):</p>
+<ol class="loweralpha simple">
+<li><p>Choose for each coordinate direction corresponding to the inflow plane a length scale
+<span class="math notranslate nohighlight">\(L_y = n_y\varDelta y\)</span>, <span class="math notranslate nohighlight">\(L_z = n_z\varDelta z\)</span>, a time scale <span class="math notranslate nohighlight">\(T\)</span> and determine
+the filter width <span class="math notranslate nohighlight">\(N_{\alpha}\)</span> (<span class="math notranslate nohighlight">\(\alpha =x,y,z\)</span>) accordingly.</p></li>
+<li><p>Initialize and store three random fields <span class="math notranslate nohighlight">\(R_{\alpha}\)</span> (again <span class="math notranslate nohighlight">\(\alpha =x,y,z\)</span>)
+of dimensions <span class="math notranslate nohighlight">\([-N_x:N_x,-N_y+1:M_y+N_y,-N_z+1:M_z+N_z]\)</span> where <span class="math notranslate nohighlight">\(M_y \times M_z\)</span> denotes the dimensions of computational gird of the inflow plane.</p></li>
+</ol>
+<p>(c) Compute the filter coefficients <span class="math notranslate nohighlight">\(b(i,j,k)\)</span> with a prescribed function or by a
+multidimensional Newton method such that the resulting correlation function <a class="reference internal" href="#equation-sdf1">(1.4.47)</a> meets the target one.</p>
+<ol class="arabic">
+<li><p>Applying the following filter operation for <span class="math notranslate nohighlight">\(j=1,\ldots,M_y\)</span>, <span class="math notranslate nohighlight">\(k=1,\ldots,M_z\)</span></p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-32">
+<span class="eqno">(1.4.55)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-32" title="Permalink to this equation">¶</a></span>\[\Psi_{\alpha}(j,k) = \sum_{i'=-N_x}^{N_x}\sum_{j'=-N_y}^{N_y}\sum_{k'=-N_z}^{N_z}b(i',j',k')R_{\alpha}(i',j+j',k+k')\]</div>
+<p>which yields the two-dimensional arrays of spatially correlated data <span class="math notranslate nohighlight">\(\Psi_{\alpha}\)</span>,
+<span class="math notranslate nohighlight">\(\alpha =x,y,z\)</span>.</p>
+</li>
+<li><p>Output velocity data with the transformation</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-33">
+<span class="eqno">(1.4.56)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-33" title="Permalink to this equation">¶</a></span>\[u_i(j,k) = U_i + a_{ij}\Psi_j(j,k)\]</div>
+<p>where the coefficients <span class="math notranslate nohighlight">\(a_{ij}\)</span> are given by <a class="reference internal" href="#equation-lundcoefficients">(1.4.8)</a>. This step ensures the synthetic velocity reproduces the target mean velocity and Reynolds stress tensor.</p>
+</li>
+<li><p>Discard the first <span class="math notranslate nohighlight">\((y,z)\)</span>-plane of <span class="math notranslate nohighlight">\(\Psi_{\alpha}\)</span> and shift the whole data:
+<span class="math notranslate nohighlight">\(\Psi_{\alpha}(i,j,k) := R_{\alpha}(i+1,j,k)\)</span>. Fill the plane <span class="math notranslate nohighlight">\(R_{\alpha}(N_x,j,k)\)</span> with new random numbers.</p></li>
+<li><p>Repeat the steps (d) <span class="math notranslate nohighlight">\(\sim\)</span> (g) for each time step.</p></li>
+</ol>
+<p>If the target correlation function is an exponential function, an alternative approach by
+<a class="bibtex reference internal" href="../../../../index.html#xie2008" id="id22">[19]</a> can be adopted for generating inflow turbulence which turns out to be much more
+efficient than the method of <a class="bibtex reference internal" href="../../../../index.html#klein2003" id="id23">[8]</a>. Instead of using the filtering operation discussed above, Xie and Castro’s method obtain the temporal correlation with the expression</p>
+<div class="math notranslate nohighlight" id="equation-temporalcorrelation">
+<span class="eqno">(1.4.57)<a class="headerlink" href="#equation-temporalcorrelation" title="Permalink to this equation">¶</a></span>\[\Psi_{\alpha}(t+\varDelta t,j,k) = \Psi_{\alpha}(t,j,k)\mathrm{exp}\left(-\frac{\pi \varDelta t}{2T} \right)+\varPsi_{\alpha}(t,j,k)\left[1-\mathrm{exp}\left(-\frac{\pi \varDelta t}{2T} \right)\right]^{0.5}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Psi_{\alpha}(t,j,k)\)</span> and <span class="math notranslate nohighlight">\(\varPsi_{\alpha}(t,j,k)\)</span> are two set of
+spatially-correlated random data resulting from a two dimensional filtering operation. For
+simplicity, we write <span class="math notranslate nohighlight">\(\Psi_{\alpha,0}\)</span>, <span class="math notranslate nohighlight">\(\Psi_{\alpha,k}\)</span>,
+<span class="math notranslate nohighlight">\(\varPsi_{\alpha,0}\)</span> and <span class="math notranslate nohighlight">\(\varPsi_{\alpha,k}\)</span> for <span class="math notranslate nohighlight">\(\Psi_{\alpha}(t,j,k)\)</span>,
+<span class="math notranslate nohighlight">\(\Psi_{\alpha}(t+k\varDelta t,j,k)\)</span>, <span class="math notranslate nohighlight">\(\varPsi_{\alpha}(t,j,k)\)</span> and <span class="math notranslate nohighlight">\(\varPsi_{\alpha}(t+k\varDelta t,j,k)\)</span>, respectively. One easily verifies that</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-34">
+<span class="eqno">(1.4.58)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-34" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{split}
+\left\langle \Psi_{\alpha,0}\Psi_{\alpha,k} \right\rangle &amp;= \left\langle \Psi_{\alpha,0}\left\{\Psi_{\alpha,k-1}\left(-\frac{\pi \varDelta t}{2T} \right)+ \varPsi_{\alpha,k-1}\left[1-\mathrm{exp}\left(-\frac{\pi \varDelta t}{2T} \right)\right]^{0.5}\right\}\right\rangle \\
+&amp; = \left\langle \Psi_{\alpha,0} \Psi_{\alpha,k-1} \right\rangle \mathrm{exp}\left(-\frac{\pi \varDelta t}{2T}\right) \\
+&amp; \cdots \\
+&amp; = \mathrm{exp}\left(-\frac{k\pi \varDelta t}{2T}\right)
+\end{split}\end{split}\]</div>
+<p>which reproduces an exponential function. An overall algorithm for generating the inflow
+velocity supported by the method of <a class="bibtex reference internal" href="../../../../index.html#xie2008" id="id24">[19]</a> can be stated as follows</p>
+<ol class="loweralpha">
+<li><p>Choose for each coordinate direction corresponding to the inflow plane a length scale
+<span class="math notranslate nohighlight">\(L_y = n_y\varDelta y\)</span>, <span class="math notranslate nohighlight">\(L_z = n_z\varDelta z\)</span>, a time scale <span class="math notranslate nohighlight">\(T\)</span> and determine
+the filter width <span class="math notranslate nohighlight">\(N_{\alpha}(\alpha =x,y,z)\)</span> accordingly.</p></li>
+<li><p>Initialize and store three random fields <span class="math notranslate nohighlight">\(R_{\alpha}\)</span> (again <span class="math notranslate nohighlight">\(\alpha =x,y,z\)</span>)
+of dimensions <span class="math notranslate nohighlight">\([-N_y+1:M_y+N_y,-N_z+1:M_z+N_z]\)</span> where <span class="math notranslate nohighlight">\(M_y \times M_z\)</span> denotes the dimensions of computational gird in the inflow plane.</p></li>
+<li><p>Compute the filter coefficients <span class="math notranslate nohighlight">\(b(j,k)\)</span> with a prescribed function or by a multidimensional Newton method such that the resulting correlation function meet the target one.</p></li>
+<li><p>Applying the following filter operations for <span class="math notranslate nohighlight">\(j=1,\ldots,M_y\)</span>, <span class="math notranslate nohighlight">\(k=1,\ldots,M_z\)</span></p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-35">
+<span class="eqno">(1.4.59)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-35" title="Permalink to this equation">¶</a></span>\[\varPsi_{\alpha}(j,k) = \sum_{j'=-N_y}^{N_y}\sum_{k'=-N_z}^{N_z}b(j',k')R_{\alpha}(j+j',k+k')\]</div>
+<p>which yields the two-dimensional arrays of spatially correlated data <span class="math notranslate nohighlight">\(\varPsi_{\alpha}\)</span>,
+<span class="math notranslate nohighlight">\(\alpha =x,y,z\)</span>.</p>
+</li>
+<li><p>Compute <span class="math notranslate nohighlight">\(\Psi_{\alpha}(j,k)\)</span> with <a class="reference internal" href="#equation-temporalcorrelation">(1.4.57)</a> and output the velocity signal with the transformation</p>
+<div class="math notranslate nohighlight" id="equation-common-technical-manual-desktop-weuq-tinf-36">
+<span class="eqno">(1.4.60)<a class="headerlink" href="#equation-common-technical-manual-desktop-weuq-tinf-36" title="Permalink to this equation">¶</a></span>\[u_i(j,k) = U_i + a_{ij}\Psi_j(j,k)\]</div>
+<p>where the coefficients <span class="math notranslate nohighlight">\(a_{ij}\)</span> are given by <a class="reference internal" href="#equation-lundcoefficients">(1.4.8)</a>. Again, this step ensures the synthetic velocity reproduces the target mean velocity and Reynolds stress tensor.</p>
+</li>
+<li><p>Repeat the steps (d) <span class="math notranslate nohighlight">\(\sim\)</span> (f) for each time step.</p></li>
+</ol>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="bibtex-bibliography-common/technical_manual/desktop/WEUQ/TinF-0"><dl class="citation">
+<dt class="bibtex label" id="wittig1975simulation"><span class="brackets">1</span></dt>
+<dd><p>L. E. Wittig and A. K. Sinha. Simulation of multicorrelated random processes using the FFT algorithm. <em>The Journal of the Acoustical Society of America</em>, 58(3):630–634, 1975. URL: <a class="reference external" href="https://doi.org/10.1121/1.380702">https://doi.org/10.1121/1.380702</a>, <a class="reference external" href="https://doi.org/10.1121/1.380702">doi:10.1121/1.380702</a>.</p>
+</dd>
+<dt class="bibtex label" id="kaimal1972spectral"><span class="brackets">2</span></dt>
+<dd><p>J. C. Kaimal, J. C. Wyngaard, Y. Izumi, and O. R. Coté. Spectral characteristics of surface-layer turbulence. <em>Quarterly Journal of the Royal Meteorological Society</em>, 98(417):563–589, 1972. URL: <a class="reference external" href="https://rmets.onlinelibrary.wiley.com/doi/abs/10.1002/qj.49709841707">https://rmets.onlinelibrary.wiley.com/doi/abs/10.1002/qj.49709841707</a>, <a class="reference external" href="https://doi.org/10.1002/qj.49709841707">doi:10.1002/qj.49709841707</a>.</p>
+</dd>
+<dt class="bibtex label" id="simiu1996wind"><span class="brackets">3</span></dt>
+<dd><p>Emil Simiu and Robert H Scanlan. Wind effects on structures: fundamentals and application to design. <em>Book published by John Willey &amp; Sons Inc</em>, 1996.</p>
+</dd>
+<dt class="bibtex label" id="davenport1967dependence"><span class="brackets">4</span></dt>
+<dd><p>AG Davenport. The dependence of wind loading on meteorological parameters. In <em>Proc. of Int. Res. Seminar, Wind Effects On Buildings &amp; Structures, NRC, Ottawa</em>. 1967.</p>
+</dd>
+<dt class="bibtex label" id="wu2017"><span class="brackets"><a class="fn-backref" href="#id1">5</a></span></dt>
+<dd><p>Xiaohua Wu. Inflow turbulence generation methods. <em>Annual Review of Fluid Mechanics</em>, 49:23–49, 2017.</p>
+</dd>
+<dt class="bibtex label" id="kraichnan1970"><span class="brackets">6</span><span class="fn-backref">(<a href="#id2">1</a>,<a href="#id8">2</a>)</span></dt>
+<dd><p>Robert H Kraichnan. Diffusion by a random velocity field. <em>The physics of fluids</em>, 13(1):22–31, 1970.</p>
+</dd>
+<dt class="bibtex label" id="hoshiya1972"><span class="brackets">7</span><span class="fn-backref">(<a href="#id3">1</a>,<a href="#id6">2</a>)</span></dt>
+<dd><p>Masaru Hoshiya. Simulation of multi-correlated random processes and application to structural vibration problems. In <em>Proceedings of the Japan Society of Civil Engineers</em>, number 204, 121–128. Japan Society of Civil Engineers, 1972.</p>
+</dd>
+<dt class="bibtex label" id="klein2003"><span class="brackets">8</span><span class="fn-backref">(<a href="#id4">1</a>,<a href="#id17">2</a>,<a href="#id20">3</a>,<a href="#id23">4</a>)</span></dt>
+<dd><p>M. Klein, A. Sadiki, and J. Janicka. A digital filter based generation of inflow data for spatially developing direct numerical or large eddy simulations. <em>Journal of Computational Physics</em>, 186(2):652–665, 2003.</p>
+</dd>
+<dt class="bibtex label" id="jarrin2006"><span class="brackets">9</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id14">2</a>,<a href="#id16">3</a>)</span></dt>
+<dd><p>Nicolas Jarrin, Sofiane Benhamadouche, Dominique Laurence, and Robert Prosser. A synthetic-eddy-method for generating inflow conditions for large-eddy simulations. <em>International Journal of Heat and Fluid Flow</em>, 27(4):585–593, 2006.</p>
+</dd>
+<dt class="bibtex label" id="shinozuka1972"><span class="brackets"><a class="fn-backref" href="#id7">10</a></span></dt>
+<dd><p>Masanobu Shinozuka and C-M Jan. Digital simulation of random processes and its applications. <em>Journal of sound and vibration</em>, 25(1):111–128, 1972.</p>
+</dd>
+<dt class="bibtex label" id="smirnov2001"><span class="brackets"><a class="fn-backref" href="#id9">11</a></span></dt>
+<dd><p>A Smirnov, S Shi, and I Celik. Random flow generation technique for large eddy simulations and particle-dynamics modeling. <em>Journal of fluids engineering</em>, 123(2):359–371, 2001.</p>
+</dd>
+<dt class="bibtex label" id="yu2014"><span class="brackets"><a class="fn-backref" href="#id10">12</a></span></dt>
+<dd><p>Rixin Yu and Xue-Song Bai. A fully divergence-free method for generation of inhomogeneous and anisotropic turbulence with large spatial variation. <em>Journal of Computational Physics</em>, 256:234–253, 2014.</p>
+</dd>
+<dt class="bibtex label" id="huang2010"><span class="brackets"><a class="fn-backref" href="#id11">13</a></span></dt>
+<dd><p>SH Huang, QS Li, and JR Wu. A general inflow turbulence generator for large eddy simulation. <em>Journal of Wind Engineering and Industrial Aerodynamics</em>, 98(10-11):600–617, 2010.</p>
+</dd>
+<dt class="bibtex label" id="castro2017"><span class="brackets"><a class="fn-backref" href="#id12">14</a></span></dt>
+<dd><p>Hugo G Castro, Rodrigo R Paz, Javier L Mroginski, and Mario A Storti. Evaluation of the proper coherence representation in random flow generation based methods. <em>Journal of Wind Engineering and Industrial Aerodynamics</em>, 168:211–227, 2017.</p>
+</dd>
+<dt class="bibtex label" id="aboshosha2015"><span class="brackets"><a class="fn-backref" href="#id13">15</a></span></dt>
+<dd><p>Haitham Aboshosha, Ahmed Elshaer, Girma T Bitsuamlak, and Ashraf El Damatty. Consistent inflow turbulence generator for les evaluation of wind-induced responses for tall buildings. <em>Journal of Wind Engineering and Industrial Aerodynamics</em>, 142:198–216, 2015.</p>
+</dd>
+<dt class="bibtex label" id="poletto2013"><span class="brackets"><a class="fn-backref" href="#id15">16</a></span></dt>
+<dd><p>R Poletto, T Craft, and A Revell. A new divergence free synthetic eddy method for the reproduction of inlet flow conditions for les. <em>Flow, turbulence and combustion</em>, 91(3):519–539, 2013.</p>
+</dd>
+<dt class="bibtex label" id="lund1998"><span class="brackets"><a class="fn-backref" href="#id18">17</a></span></dt>
+<dd><p>Thomas S Lund, Xiaohua Wu, and Kyle D Squires. Generation of turbulent inflow data for spatially-developing boundary layer simulations. <em>Journal of computational physics</em>, 140(2):233–258, 1998.</p>
+</dd>
+<dt class="bibtex label" id="kim2013"><span class="brackets"><a class="fn-backref" href="#id19">18</a></span></dt>
+<dd><p>Yusik Kim, Ian P Castro, and Zheng-Tong Xie. Divergence-free turbulence inflow conditions for large-eddy simulations with incompressible flow solvers. <em>Computers &amp; Fluids</em>, 84:56–68, 2013.</p>
+</dd>
+<dt class="bibtex label" id="xie2008"><span class="brackets">19</span><span class="fn-backref">(<a href="#id21">1</a>,<a href="#id22">2</a>,<a href="#id24">3</a>)</span></dt>
+<dd><p>Zheng-Tong Xie and Ian P Castro. Efficient generation of inflow conditions for large eddy simulation of street-scale flows. <em>Flow, turbulence and combustion</em>, 81(3):449–470, 2008.</p>
+</dd>
+</dl>
+</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, The Regents of the University of California.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+    <!-- Theme Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-158130480-2', 'auto');
+    
+    ga('send', 'pageview');
+    </script>
+
+    
+    
+
+  <style>
+         .wy-nav-content { max-width: none; }
+  </style>
+
+<script>
+    /*
+    let selectedFilters = [];
+    const images  = document.getElementsByClassName("gallery-item");
+    const filters = [...document.querySelectorAll('.filter select')];
+    const toggles = [...document.querySelectorAll('.filter input')];
+
+    var show = function (elem) {
+        elem.style.display = 'block';
+    };
+    var hide = function (elem) {
+        elem.style.display = 'none';
+    };
+    var toggleFilter =  function(el,elid) {
+        const filter = document.getElementById(elid);
+        filter.disabled = !el.checked;
+       
+        if ("createEvent" in document) {
+            var evt = document.createEvent("HTMLEvents");
+            evt.initEvent("change", false, true);
+            filter.dispatchEvent(evt);
+        }
+        else
+            filter.fireEvent("change");
+    };
+    
+    for (const filter of filters) {
+        filter.addEventListener('change', function(event) {
+            selectedFilters = filters.map(filter => filter.disabled ? '' : filter.value).filter(Boolean);
+            console.log(selectedFilters);
+            for (const image of images) {
+                if (selectedFilters.every(filter => image.classList.contains(filter))) {
+                    show(image);
+                }
+                else {hide(image)};
+            };
+        })
+    };
+    */
+</script>
+
+
+</body>
+</html>
