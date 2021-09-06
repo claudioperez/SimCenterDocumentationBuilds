@@ -1,0 +1,16 @@
+
+.. _terminal-build:
+
+Terminal
+--------
+
+.. code-block:: shell
+
+   OpenSees $ mkdir build
+   OpenSees $ cd build
+   build $ cmake ..
+   build $ cmake --build . --target OpenSeesTcl
+
+
+
+

@@ -1,0 +1,10 @@
+
+Visual Studio
+-------------
+
+#. Open Visual Studio.
+
+#. Open a terminal
+
+#. Follow the steps in :ref:`terminal-build`.
+
